@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>몬스랩 캐릭터 에디터</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #2a2f24;
+    color: #e8d8c0;
+    font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(180deg, #3d4838 0%, #2a3225 100%);
+    border-bottom: 2px solid rgba(110, 90, 65, 0.6);
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  header h1 { margin: 0; font-size: 18px; color: #f0e2c5; }
+  header .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  header button {
+    padding: 7px 12px;
+    background: #c1a682;
+    color: #2a1a10;
+    border: 2px solid #5a3920;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  header button:hover { background: #d4ba99; }
+  header #apply-btn { background: #d8843e; color: #fff; }
+
+  main { padding: 20px; max-width: 1100px; margin: 0 auto; }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* 캐릭터 목록 */
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .char-card {
+    background: #3a4334;
+    border: 2px solid #5a6850;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.15s;
+  }
+  .char-card:hover { border-color: #c1a682; transform: translateY(-2px); }
+  .char-card.add { background: #2a3225; border-style: dashed; opacity: 0.7; }
+  .char-card .char-thumb {
+    width: 80px; height: 80px;
+    margin: 0 auto 8px;
+    background: #555a4a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    image-rendering: pixelated;
+    overflow: hidden;
+  }
+  .char-card .char-thumb img { max-width: 100%; max-height: 100%; image-rendering: pixelated; }
+  .char-card .char-name { font-size: 15px; color: #e8d8c0; }
+  .char-card .char-delete {
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 3px 8px;
+    background: transparent;
+    border: 1px solid #aa6464;
+    color: #d88;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* 캐릭터 에디터 */
+  #char-editor h2 { margin-top: 0; }
+  .editor-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  #back-btn {
+    padding: 6px 14px;
+    background: transparent;
+    color: #c1a682;
+    border: 1px solid #5a6850;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 2px solid #5a6850;
+    margin-bottom: 18px;
+  }
+  .tab {
+    padding: 10px 18px;
+    background: transparent;
+    color: #b8a988;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .tab.active { color: #f0e2c5; border-bottom-color: #d8843e; }
+
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* 단계 탭 */
+  .stage-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .stage-tab {
+    padding: 7px 14px;
+    background: #3a4334;
+    color: #b8a988;
+    border: 1.5px solid #5a6850;
+    border-radius: 18px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .stage-tab.active { background: #c1a682; color: #2a1a10; border-color: #5a3920; }
+
+  /* 상태별 이미지 슬롯 */
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 14px;
+  }
+  .state-slot {
+    background: #3a4334;
+    border: 1.5px solid #5a6850;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .state-slot .state-label {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #f0e2c5;
+  }
+  .state-slot .preview {
+    width: 100%;
+    height: 130px;
+    background: #2a2f24 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect width="10" height="10" fill="%2335392c"/><rect x="10" y="10" width="10" height="10" fill="%2335392c"/></svg>');
+    border: 1px solid #5a6850;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .state-slot .preview img {
+    max-width: 90%;
+    max-height: 90%;
+    image-rendering: pixelated;
+  }
+  .state-slot input[type="file"] {
+    width: 100%;
+    font-size: 11px;
+    color: #c1a682;
+  }
+  .state-slot .flip-row {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #c1a682;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .state-slot .flip-toggle-btn {
+    padding: 3px 8px;
+    background: #5a6850;
+    color: #e8d8c0;
+    border: 1px solid #7a8870;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .state-slot .clear-btn {
+    margin-top: 4px;
+    background: transparent;
+    border: none;
+    color: #d88;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .state-slot .img-info {
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* 폼 공통 */
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .form-row label { color: #c1a682; font-size: 13px; min-width: 130px; }
+  .form-row input[type="time"],
+  .form-row input[type="number"] {
+    padding: 6px 10px;
+    background: #2a2f24;
+    color: #e8d8c0;
+    border: 1px solid #5a6850;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 100px;
+  }
+  .form-row .suffix { color: #b8a988; font-size: 12px; }
+  fieldset {
+    border: 1px solid #5a6850;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 14px 0;
+  }
+  legend { color: #d8843e; padding: 0 8px; font-size: 13px; }
+
+  /* 수명 표 */
+  table.lifespan {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+  }
+  table.lifespan th, table.lifespan td {
+    border: 1px solid #5a6850;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 13px;
+  }
+  table.lifespan th { background: #3a4334; color: #f0e2c5; }
+  table.lifespan input { width: 60px; padding: 4px; background: #2a2f24; color: #e8d8c0; border: 1px solid #5a6850; border-radius: 3px; text-align: center; }
+
+  /* 말풍선 텍스트 영역 */
+  .murmur-block {
+    margin-bottom: 14px;
+    background: #3a4334;
+    border: 1px solid #5a6850;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .murmur-block .murmur-state-label {
+    font-size: 13px;
+    color: #f0e2c5;
+    margin-bottom: 6px;
+  }
+  .murmur-block textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #2a2f24;
+    color: #e8d8c0;
+    border: 1px solid #5a6850;
+    border-radius: 4px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+  }
+  .murmur-block .hint {
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  .save-bar {
+    position: sticky;
+    bottom: 0;
+    background: #2a2f24;
+    border-top: 2px solid #5a6850;
+    padding: 12px 0;
+    margin-top: 20px;
+    text-align: right;
+  }
+  .save-bar button {
+    padding: 10px 24px;
+    background: #d8843e;
+    color: #fff;
+    border: 2px solid #8a4a20;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .save-bar .save-status { color: #b8a988; font-size: 12px; margin-right: 12px; }
+
+  .toast {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f4e9cd;
+    color: #4a3220;
+    border: 2px solid #8a6140;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    z-index: 200;
+    animation: fadein 0.2s;
+  }
+  @keyframes fadein {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🛠️ 몬스랩 캐릭터 에디터</h1>
+  <div class="actions">
+    <button id="export-btn">JSON 내보내기</button>
+    <button id="import-btn">JSON 가져오기</button>
+    <input type="file" id="import-file" accept=".json" hidden>
+    <button id="apply-btn">메인 앱에 적용</button>
+    <a href="index.html" style="text-decoration:none;"><button>앱 열기 →</button></a>
+  </div>
+</header>
+
+<main>
+  <!-- 캐릭터 목록 -->
+  <section id="char-list" class="screen active">
+    <h2>캐릭터 목록</h2>
+    <div class="char-grid" id="char-grid"></div>
+  </section>
+
+  <!-- 캐릭터 에디터 -->
+  <section id="char-editor" class="screen">
+    <div class="editor-header">
+      <button id="back-btn">← 목록으로</button>
+      <h2 id="char-title">캐릭터</h2>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="images">이미지</button>
+      <button class="tab" data-tab="lifespan">수명</button>
+      <button class="tab" data-tab="behavior">행동</button>
+      <button class="tab" data-tab="murmur">말풍선</button>
+    </div>
+
+    <!-- 이미지 탭 -->
+    <div class="tab-pane active" data-tab-pane="images">
+      <p style="color:#b8a988;font-size:12px;">PNG 투명배경 이미지를 올리면 여백을 자동으로 잘라냅니다. 좌우반전 버튼으로 캐릭터 방향을 맞추세요.</p>
+      <div class="stage-tabs" id="img-stage-tabs"></div>
+      <div class="state-grid" id="state-grid"></div>
+    </div>
+
+    <!-- 수명 탭 -->
+    <div class="tab-pane" data-tab-pane="lifespan">
+      <p style="color:#b8a988;font-size:12px;">수명 일수 (총 수명 = 알을 제외한 단계 합계)</p>
+      <table class="lifespan">
+        <tr><th>단계</th><th>최소 (일)</th><th>최대 (일)</th><th>비고</th></tr>
+        <tr><td>유아기</td><td><input type="number" id="ls-baby-min" min="0" value="1"></td><td><input type="number" id="ls-baby-max" min="0" value="1"></td><td>고정 1일</td></tr>
+        <tr><td>영아기</td><td><input type="number" id="ls-infant-min" min="0" value="2"></td><td><input type="number" id="ls-infant-max" min="0" value="2"></td><td>고정 2일</td></tr>
+        <tr><td>청소년기</td><td><input type="number" id="ls-teen-min" min="0" value="3"></td><td><input type="number" id="ls-teen-max" min="0" value="3"></td><td>고정 3일</td></tr>
+        <tr><td>청년기</td><td><input type="number" id="ls-adult-min" min="0" value="7"></td><td><input type="number" id="ls-adult-max" min="0" value="14"></td><td>난수 7~14일</td></tr>
+        <tr><td>노년기</td><td><input type="number" id="ls-elder-min" min="0" value="3"></td><td><input type="number" id="ls-elder-max" min="0" value="5"></td><td>난수 3~5일</td></tr>
+      </table>
+    </div>
+
+    <!-- 행동 탭 -->
+    <div class="tab-pane" data-tab-pane="behavior">
+      <fieldset>
+        <legend>수면 시간대</legend>
+        <div class="form-row">
+          <label>수면 시작:</label>
+          <input type="time" id="sleep-start" value="21:00">
+        </label>
+        </div>
+        <div class="form-row">
+          <label>수면 종료:</label>
+          <input type="time" id="sleep-end" value="10:00">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>게이지 감소 속도</legend>
+        <div class="form-row">
+          <label>배부름 1칸당:</label>
+          <input type="number" id="hunger-hours" step="0.25" min="0.25" value="2.75">
+          <span class="suffix">시간</span>
+        </div>
+        <div class="form-row">
+          <label>행복함 1칸당:</label>
+          <input type="number" id="happy-hours" step="0.25" min="0.25" value="2.75">
+          <span class="suffix">시간</span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>활동시간 상태 분포 (합계 100%)</legend>
+        <div class="form-row">
+          <label>일상 비율:</label>
+          <input type="number" id="idle-ratio" min="0" max="100" value="60">
+          <span class="suffix">%</span>
+        </div>
+        <div class="form-row">
+          <label>활동 비율:</label>
+          <input type="number" id="activity-ratio" min="0" max="100" value="30">
+          <span class="suffix">%</span>
+        </div>
+        <div class="form-row">
+          <label>신남 비율:</label>
+          <input type="number" id="excited-ratio" min="0" max="100" value="10">
+          <span class="suffix">%</span>
+        </div>
+        <div class="form-row">
+          <label>합계:</label>
+          <span id="ratio-sum" class="suffix">100%</span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>상태 전환 제한</legend>
+        <div class="form-row">
+          <label>최소 유지 시간:</label>
+          <input type="number" id="min-hold" min="10" step="10" value="60">
+          <span class="suffix">초</span>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- 말풍선 탭 -->
+    <div class="tab-pane" data-tab-pane="murmur">
+      <p style="color:#b8a988;font-size:12px;">단계×상태별 말풍선 텍스트. 한 줄당 하나의 텍스트. 빈 줄은 무시됩니다.</p>
+      <div class="stage-tabs" id="murmur-stage-tabs"></div>
+      <div id="murmur-list"></div>
+    </div>
+
+    <div class="save-bar">
+      <span class="save-status" id="save-status"></span>
+      <button id="save-btn">💾 저장</button>
+    </div>
+  </section>
+</main>
+
+<script>
+// ═════ 상수 ═════
+const STAGES = ['유아기', '영아기', '청소년기', '청년기', '노년기'];
+const STATES = [
+  { id: 'idle',     label: '일상' },
+  { id: 'activity', label: '활동' },
+  { id: 'eat',      label: '식사' },
+  { id: 'poop',     label: '배설' },
+  { id: 'excited',  label: '신남' },
+  { id: 'sleep',    label: '수면' },
+];
+const STORAGE_KEY = 'monlab_characters';
+const APPLIED_KEY = 'monlab_char_applied';
+
+const DEFAULT_BEHAVIOR = {
+  sleepStart: '21:00',
+  sleepEnd:   '10:00',
+  hungerHours: 2.75,
+  happyHours:  2.75,
+  idleRatio:     60,
+  activityRatio: 30,
+  excitedRatio:  10,
+  minHoldSec:    60,
+};
+
+const DEFAULT_LIFESPAN = {
+  '유아기':   { min: 1,  max: 1  },
+  '영아기':   { min: 2,  max: 2  },
+  '청소년기': { min: 3,  max: 3  },
+  '청년기':   { min: 7,  max: 14 },
+  '노년기':   { min: 3,  max: 5  },
+};
+
+// ═════ 상태 ═════
+let state = {
+  characters: {},
+  currentChar: null,
+  currentStage: '청년기',
+  currentMurmurStage: '청년기',
+};
+
+function newCharacter() {
+  const c = {
+    images: {},
+    lifespan: JSON.parse(JSON.stringify(DEFAULT_LIFESPAN)),
+    behavior: JSON.parse(JSON.stringify(DEFAULT_BEHAVIOR)),
+    murmurs: {},
+  };
+  STAGES.forEach(s => {
+    c.images[s] = {};
+    c.murmurs[s] = {};
+    STATES.forEach(st => { c.murmurs[s][st.id] = []; });
+  });
+  return c;
+}
+
+function loadAll() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) state.characters = JSON.parse(raw);
+  } catch(e) { console.warn(e); }
+  if (!state.characters['파리지옥']) {
+    state.characters['파리지옥'] = newCharacter();
+    state.characters['파리지옥'].murmurs['청년기']['idle'] = ['흠...', '냠', '냠냠', '히잉~', '쿠우~', '쫑긋', '?', '...'];
+  }
+}
+
+function saveAll() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.characters));
+    setStatus('localStorage 저장됨 · ' + new Date().toLocaleTimeString());
+  } catch(e) {
+    setStatus('저장 실패: ' + e.message, true);
+  }
+}
+
+function setStatus(msg, isErr) {
+  const el = document.getElementById('save-status');
+  el.textContent = msg;
+  el.style.color = isErr ? '#e88' : '#b8a988';
+}
+
+function toast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+// ═════ 이미지 처리 ═════
+function loadImageFromDataUrl(dataUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = dataUrl;
+  });
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = e => resolve(e.target.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+async function autoCrop(dataUrl) {
+  const img = await loadImageFromDataUrl(dataUrl);
+  const c = document.createElement('canvas');
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  const ctx = c.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  const data = ctx.getImageData(0, 0, c.width, c.height);
+  const px = data.data;
+  let minX = c.width, minY = c.height, maxX = -1, maxY = -1;
+  for (let y = 0; y < c.height; y++) {
+    for (let x = 0; x < c.width; x++) {
+      const a = px[(y * c.width + x) * 4 + 3];
+      if (a > 8) {
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+  if (maxX < 0) return dataUrl;
+  const w = maxX - minX + 1;
+  const h = maxY - minY + 1;
+  const out = document.createElement('canvas');
+  out.width = w; out.height = h;
+  out.getContext('2d').drawImage(c, minX, minY, w, h, 0, 0, w, h);
+  return out.toDataURL('image/png');
+}
+
+async function flipImage(dataUrl) {
+  const img = await loadImageFromDataUrl(dataUrl);
+  const c = document.createElement('canvas');
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  const ctx = c.getContext('2d');
+  ctx.translate(c.width, 0);
+  ctx.scale(-1, 1);
+  ctx.drawImage(img, 0, 0);
+  return c.toDataURL('image/png');
+}
+
+// ═════ 화면 전환 ═════
+function showList() {
+  document.getElementById('char-list').classList.add('active');
+  document.getElementById('char-editor').classList.remove('active');
+  state.currentChar = null;
+  renderCharGrid();
+}
+
+function showEditor(name) {
+  state.currentChar = name;
+  document.getElementById('char-list').classList.remove('active');
+  document.getElementById('char-editor').classList.add('active');
+  document.getElementById('char-title').textContent = name + ' (' + name + ')';
+  renderImages();
+  renderLifespan();
+  renderBehavior();
+  renderMurmurs();
+}
+
+// ═════ 캐릭터 그리드 ═════
+function renderCharGrid() {
+  const grid = document.getElementById('char-grid');
+  grid.innerHTML = '';
+  Object.keys(state.characters).forEach(name => {
+    const c = state.characters[name];
+    const card = document.createElement('div');
+    card.className = 'char-card';
+    const thumb = c.images['청년기'] && c.images['청년기']['idle'];
+    card.innerHTML = `
+      <div class="char-thumb">${thumb ? `<img src="${thumb}">` : '🌱'}</div>
+      <div class="char-name">${name}</div>
+      <button class="char-delete">삭제</button>
+    `;
+    card.addEventListener('click', (e) => {
+      if (e.target.classList.contains('char-delete')) {
+        if (confirm(name + ' 캐릭터를 삭제할까요?')) {
+          delete state.characters[name];
+          saveAll();
+          renderCharGrid();
+        }
+      } else {
+        showEditor(name);
+      }
+    });
+    grid.appendChild(card);
+  });
+  // + 추가
+  const addBtn = document.createElement('div');
+  addBtn.className = 'char-card add';
+  addBtn.innerHTML = `<div class="char-thumb">＋</div><div class="char-name">새 캐릭터</div>`;
+  addBtn.addEventListener('click', () => {
+    const name = prompt('새 캐릭터 이름:');
+    if (!name || !name.trim()) return;
+    if (state.characters[name]) { alert('이미 존재합니다'); return; }
+    state.characters[name] = newCharacter();
+    saveAll();
+    renderCharGrid();
+  });
+  grid.appendChild(addBtn);
+}
+
+// ═════ 이미지 탭 ═════
+function renderImages() {
+  // 단계 탭
+  const stageTabs = document.getElementById('img-stage-tabs');
+  stageTabs.innerHTML = '';
+  STAGES.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'stage-tab' + (s === state.currentStage ? ' active' : '');
+    btn.textContent = s;
+    btn.addEventListener('click', () => {
+      state.currentStage = s;
+      renderImages();
+    });
+    stageTabs.appendChild(btn);
+  });
+
+  // 상태별 슬롯
+  const grid = document.getElementById('state-grid');
+  grid.innerHTML = '';
+  const charImgs = state.characters[state.currentChar].images[state.currentStage] || {};
+
+  STATES.forEach(st => {
+    const slot = document.createElement('div');
+    slot.className = 'state-slot';
+    const dataUrl = charImgs[st.id] || '';
+    slot.innerHTML = `
+      <div class="state-label">${st.label}</div>
+      <div class="preview">${dataUrl ? `<img src="${dataUrl}">` : '<span style="color:#666;font-size:11px;">(없음)</span>'}</div>
+      <input type="file" accept="image/png,image/jpeg" data-state="${st.id}">
+      <div class="img-info" data-info="${st.id}"></div>
+      <div class="flip-row">
+        <button class="flip-toggle-btn" data-flip="${st.id}" ${dataUrl ? '' : 'disabled'}>↔ 좌우반전</button>
+        <button class="clear-btn" data-clear="${st.id}" ${dataUrl ? '' : 'style="visibility:hidden"'}>삭제</button>
+      </div>
+    `;
+    grid.appendChild(slot);
+
+    if (dataUrl) {
+      loadImageFromDataUrl(dataUrl).then(img => {
+        const info = slot.querySelector('[data-info="' + st.id + '"]');
+        info.textContent = `${img.naturalWidth}×${img.naturalHeight}px`;
+      });
+    }
+
+    slot.querySelector('input[type="file"]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const raw = await fileToDataUrl(file);
+      const cropped = await autoCrop(raw);
+      state.characters[state.currentChar].images[state.currentStage][st.id] = cropped;
+      saveAll();
+      renderImages();
+      toast(st.label + ' 이미지 업로드됨 (자동 크롭)');
+    });
+
+    slot.querySelector('[data-flip="' + st.id + '"]').addEventListener('click', async () => {
+      const cur = state.characters[state.currentChar].images[state.currentStage][st.id];
+      if (!cur) return;
+      const flipped = await flipImage(cur);
+      state.characters[state.currentChar].images[state.currentStage][st.id] = flipped;
+      saveAll();
+      renderImages();
+    });
+
+    slot.querySelector('[data-clear="' + st.id + '"]').addEventListener('click', () => {
+      delete state.characters[state.currentChar].images[state.currentStage][st.id];
+      saveAll();
+      renderImages();
+    });
+  });
+}
+
+// ═════ 수명 탭 ═════
+function renderLifespan() {
+  const c = state.characters[state.currentChar];
+  const map = {
+    '유아기':   ['ls-baby-min', 'ls-baby-max'],
+    '영아기':   ['ls-infant-min', 'ls-infant-max'],
+    '청소년기': ['ls-teen-min', 'ls-teen-max'],
+    '청년기':   ['ls-adult-min', 'ls-adult-max'],
+    '노년기':   ['ls-elder-min', 'ls-elder-max'],
+  };
+  Object.entries(map).forEach(([stage, [minId, maxId]]) => {
+    const el1 = document.getElementById(minId);
+    const el2 = document.getElementById(maxId);
+    if (el1) {
+      el1.value = c.lifespan[stage].min;
+      el1.oninput = (e) => { c.lifespan[stage].min = +e.target.value; saveAll(); };
+    }
+    if (el2) {
+      el2.value = c.lifespan[stage].max;
+      el2.oninput = (e) => { c.lifespan[stage].max = +e.target.value; saveAll(); };
+    }
+  });
+}
+
+// ═════ 행동 탭 ═════
+function renderBehavior() {
+  const c = state.characters[state.currentChar];
+  const b = c.behavior;
+  const fields = [
+    ['sleep-start', 'sleepStart'],
+    ['sleep-end', 'sleepEnd'],
+    ['hunger-hours', 'hungerHours'],
+    ['happy-hours', 'happyHours'],
+    ['idle-ratio', 'idleRatio'],
+    ['activity-ratio', 'activityRatio'],
+    ['excited-ratio', 'excitedRatio'],
+    ['min-hold', 'minHoldSec'],
+  ];
+  fields.forEach(([id, key]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = b[key];
+    el.oninput = (e) => {
+      const v = (id.includes('start') || id.includes('end')) ? e.target.value : +e.target.value;
+      b[key] = v;
+      updateRatioSum();
+      saveAll();
+    };
+  });
+  updateRatioSum();
+}
+
+function updateRatioSum() {
+  if (!state.currentChar) return;
+  const b = state.characters[state.currentChar].behavior;
+  const sum = (+b.idleRatio || 0) + (+b.activityRatio || 0) + (+b.excitedRatio || 0);
+  const el = document.getElementById('ratio-sum');
+  if (el) {
+    el.textContent = sum + '%';
+    el.style.color = sum === 100 ? '#7c6' : '#e88';
+  }
+}
+
+// ═════ 말풍선 탭 ═════
+function renderMurmurs() {
+  // 단계 탭
+  const stageTabs = document.getElementById('murmur-stage-tabs');
+  stageTabs.innerHTML = '';
+  STAGES.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'stage-tab' + (s === state.currentMurmurStage ? ' active' : '');
+    btn.textContent = s;
+    btn.addEventListener('click', () => {
+      state.currentMurmurStage = s;
+      renderMurmurs();
+    });
+    stageTabs.appendChild(btn);
+  });
+
+  const list = document.getElementById('murmur-list');
+  list.innerHTML = '';
+  const c = state.characters[state.currentChar];
+  const stageMurmurs = c.murmurs[state.currentMurmurStage];
+
+  STATES.forEach(st => {
+    const block = document.createElement('div');
+    block.className = 'murmur-block';
+    const arr = stageMurmurs[st.id] || [];
+    block.innerHTML = `
+      <div class="murmur-state-label">${st.label} (${arr.length}개)</div>
+      <textarea data-state="${st.id}" placeholder="한 줄에 하나씩...">${arr.join('\n')}</textarea>
+      <div class="hint">예: "흠...", "냠냠", "?"</div>
+    `;
+    list.appendChild(block);
+
+    block.querySelector('textarea').addEventListener('input', (e) => {
+      const lines = e.target.value.split('\n').map(l => l.trim()).filter(Boolean);
+      stageMurmurs[st.id] = lines;
+      saveAll();
+      block.querySelector('.murmur-state-label').textContent = st.label + ' (' + lines.length + '개)';
+    });
+  });
+}
+
+// ═════ 탭 전환 ═════
+function setupTabs() {
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(tt => tt.classList.remove('active'));
+      t.classList.add('active');
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelector(`.tab-pane[data-tab-pane="${t.dataset.tab}"]`).classList.add('active');
+    });
+  });
+}
+
+// ═════ 가져오기/내보내기/적용 ═════
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state.characters, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'monlab_characters.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('JSON 다운로드');
+}
+
+function importJSON() {
+  document.getElementById('import-file').click();
+}
+
+document.getElementById('import-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+    if (typeof data === 'object' && data !== null) {
+      state.characters = data;
+      saveAll();
+      renderCharGrid();
+      if (state.currentChar) showEditor(state.currentChar);
+      toast('JSON 가져오기 완료');
+    }
+  } catch(err) { alert('잘못된 JSON 파일: ' + err.message); }
+});
+
+function applyToMainApp() {
+  // localStorage에 동일 키로 저장 (메인 앱이 같은 origin에서 읽음)
+  saveAll();
+  // 적용 표시 키
+  localStorage.setItem(APPLIED_KEY, JSON.stringify({ at: new Date().toISOString() }));
+  toast('메인 앱에 적용됨. 앱을 새로고침하세요.');
+}
+
+// ═════ 초기화 ═════
+loadAll();
+setupTabs();
+renderCharGrid();
+
+document.getElementById('back-btn').addEventListener('click', showList);
+document.getElementById('save-btn').addEventListener('click', () => { saveAll(); toast('저장됨'); });
+document.getElementById('export-btn').addEventListener('click', exportJSON);
+document.getElementById('import-btn').addEventListener('click', importJSON);
+document.getElementById('apply-btn').addEventListener('click', applyToMainApp);
+</script>
+</body>
+</html>

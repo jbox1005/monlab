@@ -1,6 +1,6 @@
 // 서비스 워커 — cache-as-you-go 전략 (첫 로드 후 모든 에셋 오프라인 사용 가능)
 const CACHE = 'monlab-v1';
-const CORE = ['./', './index.html', './manifest.json'];
+const CORE = ['./', './index.html', './editor.html', './manifest.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(

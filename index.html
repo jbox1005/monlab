@@ -1175,6 +1175,9 @@
           <option value="사망">사망</option>
         </select>
       </div>
+      <div class="form-row" style="padding:6px 4px;">
+        <a href="editor.html" target="_blank" style="color:#d8843e;font-size:13px;text-decoration:none;border:1px solid #d8843e;padding:4px 10px;border-radius:5px;">🛠️ 캐릭터 에디터 열기</a>
+      </div>
       <div class="day-jumper">
         <label for="day-input">일차:</label>
         <input type="number" id="day-input" min="1" max="30" value="1">
@@ -1269,9 +1272,12 @@ const EGG_DURATION_MIN = 30;
 const DAY_MIN = 1440;
 
 function rollLifePlan() {
+  const cfg = EDITOR_CHAR && EDITOR_CHAR.lifespan;
+  const am = (cfg && cfg['청년기']) || { min: 7, max: 14 };
+  const em = (cfg && cfg['노년기']) || { min: 3, max: 5 };
   return {
-    adultDays: 7 + Math.floor(Math.random() * 8),  // 7~14
-    elderDays: 3 + Math.floor(Math.random() * 3),  // 3~5
+    adultDays: am.min + Math.floor(Math.random() * (am.max - am.min + 1)),
+    elderDays: em.min + Math.floor(Math.random() * (em.max - em.min + 1)),
   };
 }
 
@@ -1315,8 +1321,40 @@ const STAGE_IMAGES = {
   '노년기':   'assets/stage_elder.png',
 };
 
-const HUNGER_DRAIN_PER_MIN = 4 / (11 * 60);  // 활동시간 11h에 4칸
-const HAPPY_DRAIN_PER_MIN = 4 / (11 * 60);
+// ═════ 에디터 설정 로딩 (관리자 에디터에서 저장한 데이터) ═════
+let EDITOR_CHAR = null;
+try {
+  const _raw = localStorage.getItem('monlab_characters');
+  if (_raw) {
+    const _data = JSON.parse(_raw);
+    EDITOR_CHAR = _data['파리지옥'] || null;
+  }
+} catch(e) { console.warn('editor config load failed:', e); }
+
+function resolveStageStateImage(stage, stateName) {
+  if (EDITOR_CHAR && EDITOR_CHAR.images) {
+    const stageImgs = EDITOR_CHAR.images[stage] || {};
+    if (stageImgs[stateName]) return stageImgs[stateName];
+    if (stageImgs.idle) return stageImgs.idle;
+  }
+  return STAGE_IMAGES[stage];
+}
+
+function getEditorMurmur(stage, stateName) {
+  if (EDITOR_CHAR && EDITOR_CHAR.murmurs && EDITOR_CHAR.murmurs[stage]) {
+    const arr = EDITOR_CHAR.murmurs[stage][stateName];
+    if (arr && arr.length > 0) return arr[Math.floor(Math.random() * arr.length)];
+  }
+  return null;
+}
+
+// 게이지 감소율 (에디터 설정 우선, 없으면 활동시간 11h에 4칸 기본값)
+const HUNGER_DRAIN_PER_MIN = (EDITOR_CHAR && EDITOR_CHAR.behavior && EDITOR_CHAR.behavior.hungerHours)
+  ? 1 / (EDITOR_CHAR.behavior.hungerHours * 60)
+  : 4 / (11 * 60);
+const HAPPY_DRAIN_PER_MIN = (EDITOR_CHAR && EDITOR_CHAR.behavior && EDITOR_CHAR.behavior.happyHours)
+  ? 1 / (EDITOR_CHAR.behavior.happyHours * 60)
+  : 4 / (11 * 60);
 
 // ═════ 캐릭터 상태 ═════
 const S = {
@@ -1337,7 +1375,7 @@ const callBubble = document.getElementById('call-bubble');
 const orbitFlyEl = document.getElementById('orbit-fly');
 
 function applyStageImage() {
-  const src = STAGE_IMAGES[GAME.stage];
+  const src = resolveStageStateImage(GAME.stage, S.currentState);
   if (src) monsterEl.src = src;
 }
 
@@ -1383,8 +1421,15 @@ function toast(msg, dur = 1500) {
 
 // ═════ 시간 유틸 ═════
 function isSleepTime(gm) {
-  const h = Math.floor((gm / 60) % 24);
-  return h >= 21 || h < 10;
+  let startMin = 21 * 60, endMin = 10 * 60;
+  if (EDITOR_CHAR && EDITOR_CHAR.behavior) {
+    const [sh, sm] = (EDITOR_CHAR.behavior.sleepStart || '21:00').split(':').map(Number);
+    const [eh, em] = (EDITOR_CHAR.behavior.sleepEnd || '10:00').split(':').map(Number);
+    startMin = sh * 60 + sm;
+    endMin = eh * 60 + em;
+  }
+  if (startMin > endMin) return gm >= startMin || gm < endMin;
+  return gm >= startMin && gm < endMin;
 }
 function formatClock(gm) {
   const h = Math.floor((gm / 60) % 24);
@@ -1604,7 +1649,8 @@ const idleBehaviors = {
     weight: 2,
     duration: () => 2.5,
     enter(sd) {
-      const text = MUTTERS[Math.floor(Math.random() * MUTTERS.length)];
+      const text = getEditorMurmur(GAME.stage, 'idle')
+        || MUTTERS[Math.floor(Math.random() * MUTTERS.length)];
       const b = document.createElement('div');
       b.className = 'mutter-bubble';
       b.textContent = text;
@@ -1879,6 +1925,8 @@ function setState(name) {
   document.querySelectorAll('.debug-controls button').forEach(b => {
     b.classList.toggle('active', b.dataset.action === name);
   });
+  // 에디터에서 상태별 이미지 등록되어 있으면 갱신
+  applyStageImage();
 }
 
 // ═════ HUD ═════
