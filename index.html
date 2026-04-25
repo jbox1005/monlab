@@ -727,18 +727,20 @@
 
   .toast {
     position: fixed;
-    top: 20px;
+    top: calc(env(safe-area-inset-top, 0px) + 78px);
     left: 50%;
     transform: translateX(-50%);
     background: var(--panel);
     color: var(--ink);
     border: 3px solid var(--frame);
     padding: 10px 18px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
-    z-index: 100;
-    box-shadow: var(--shadow);
+    z-index: 110;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35), var(--shadow);
     animation: toastIn 0.2s;
+    max-width: 280px;
+    text-align: center;
   }
   @keyframes toastIn {
     from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
