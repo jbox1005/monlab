@@ -1,6 +1,6 @@
 {
-  "name": "몬랩 - 파리지옥이",
-  "short_name": "몬랩",
+  "name": "몬스랩 (MONS LAB)",
+  "short_name": "몬스랩",
   "description": "유전자 교배 몬스터 키우기",
   "start_url": "./index.html",
   "scope": "./",
@@ -27,6 +27,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
