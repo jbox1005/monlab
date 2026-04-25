@@ -119,13 +119,38 @@
     }
   }
 
-  h2 {
-    margin: 14px 0 12px;
-    font-size: 22px;
+  /* ── 타이틀 배너 ── */
+  .title-banner {
+    margin: 16px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .title-leaves {
+    width: 56px;
+    height: auto;
+    image-rendering: pixelated;
+    flex-shrink: 0;
+    filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.3));
+  }
+  .title-leaves.right { transform: scaleX(-1); }
+  .banner-bg {
+    background-image: url('assets/title_banner.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    padding: 8px 28px 10px;
+    min-width: 200px;
     text-align: center;
-    color: #ece2cd;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.25));
+  }
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #4a3220;
     letter-spacing: 0.02em;
-    text-shadow: 1px 2px 0 rgba(20, 30, 18, 0.5);
   }
 
   /* ── 상단 HUD (다크 글래스 카드) ── */
@@ -213,11 +238,31 @@
     width: 26px;
     height: 26px;
     image-rendering: pixelated;
-    transition: filter 0.2s, opacity 0.2s, transform 0.1s;
+    transition: filter 0.25s, opacity 0.25s, transform 0.1s;
   }
   .gauge-cell-icon.inactive {
-    filter: grayscale(1) brightness(1.15);
-    opacity: 0.3;
+    filter: grayscale(0.7) brightness(0.5);
+    opacity: 0.35;
+  }
+  /* 활성 셀 미세 글로우 */
+  #hunger-gauge .gauge-cell-icon:not(.inactive) {
+    filter: drop-shadow(0 0 1px rgba(255, 200, 100, 0.6));
+  }
+  #happy-gauge .gauge-cell-icon:not(.inactive) {
+    filter: drop-shadow(0 0 1px rgba(255, 160, 200, 0.7));
+  }
+  /* 마지막 활성 셀 강한 글로우 (게이지 끝 표시) */
+  #hunger-gauge .gauge-cell-icon.glow-end {
+    filter:
+      drop-shadow(0 0 4px rgba(255, 210, 110, 0.95))
+      drop-shadow(0 0 8px rgba(255, 180, 80, 0.7));
+    transform: scale(1.05);
+  }
+  #happy-gauge .gauge-cell-icon.glow-end {
+    filter:
+      drop-shadow(0 0 4px rgba(255, 160, 210, 0.95))
+      drop-shadow(0 0 8px rgba(255, 130, 190, 0.7));
+    transform: scale(1.05);
   }
 
   /* ── 방 ── */
@@ -340,6 +385,18 @@
   .light-switch:hover { transform: scale(1.1); }
   .light-switch:active { transform: scale(0.92); }
   #deco-rug   { width: 150px; bottom: 26px; left: 50%; transform: translateX(-50%); }
+  #deco-hanging-plant {
+    width: 50px;
+    top: 0;
+    left: 28px;
+    z-index: 2;
+  }
+  #deco-terrarium {
+    width: 38px;
+    bottom: 130px;
+    left: 12px;
+    z-index: 2;
+  }
   #monster {
     position: absolute;
     left: 50%;
@@ -987,7 +1044,13 @@
         </div>
       </div>
     </div>
-    <h2>파리지옥이의 방</h2>
+    <div class="title-banner">
+      <img class="title-leaves left" src="assets/title_leaves.png">
+      <div class="banner-bg">
+        <h2>파리지옥이의 방</h2>
+      </div>
+      <img class="title-leaves right" src="assets/title_leaves.png">
+    </div>
     <div id="room">
       <div class="room-floor"></div>
       <div id="window">
@@ -1000,6 +1063,8 @@
         <div class="clock-hand minute" id="clock-minute"></div>
       </div>
       <img class="deco light-switch" id="light-switch" src="assets/switch_on.png" alt="조명 스위치">
+      <img class="deco" id="deco-hanging-plant" src="assets/deco_hanging_plant.png">
+      <img class="deco" id="deco-terrarium" src="assets/deco_terrarium.png">
       <img class="deco" id="deco-rug" src="assets/rug_a.png">
       <div class="shadow" id="shadow"></div>
       <img id="monster" src="assets/stage_adult.png" alt="파리지옥이">
@@ -1889,6 +1954,7 @@ function updateGauge(id, val, kind) {
   const filled = Math.ceil(val - 0.0001);
   cells.forEach((c, i) => {
     c.classList.toggle('inactive', i >= filled);
+    c.classList.toggle('glow-end', i === filled - 1);
   });
 }
 
