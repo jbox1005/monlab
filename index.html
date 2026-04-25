@@ -384,6 +384,19 @@
   }
   .light-switch:hover { transform: scale(1.1); }
   .light-switch:active { transform: scale(0.92); }
+  .dev-switch {
+    width: 28px;
+    top: 110px;
+    right: 90px;
+    cursor: pointer;
+    pointer-events: auto !important;
+    transition: transform 0.08s;
+    z-index: 3 !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .dev-switch:hover { transform: scale(1.1); }
+  .dev-switch:active { transform: scale(0.92); }
   #deco-rug   { width: 150px; bottom: 26px; left: 50%; transform: translateX(-50%); }
   #deco-hanging-plant {
     width: 50px;
@@ -1063,6 +1076,7 @@
         <div class="clock-hand minute" id="clock-minute"></div>
       </div>
       <img class="deco light-switch" id="light-switch" src="assets/switch_on.png" alt="조명 스위치">
+      <img class="deco dev-switch" id="dev-switch" src="assets/dev_switch_off.png" alt="개발자 모드">
       <img class="deco" id="deco-hanging-plant" src="assets/deco_hanging_plant.png">
       <img class="deco" id="deco-terrarium" src="assets/deco_terrarium.png">
       <img class="deco" id="deco-rug" src="assets/rug_a.png">
@@ -2655,15 +2669,28 @@ monsterEl.addEventListener('click', (e) => {
   }
 });
 
-// ═════ 개발자 모드 토글 (D 키) ═════
+// ═════ 개발자 모드 토글 (D 키 / 빨간 스위치) ═════
+function setDevMode(on) {
+  document.body.classList.toggle('dev-mode', on);
+  const sw = document.getElementById('dev-switch');
+  if (sw) sw.src = on ? 'assets/dev_switch_on.png' : 'assets/dev_switch_off.png';
+}
+
 document.addEventListener('keydown', (e) => {
   const tag = (e.target.tagName || '').toLowerCase();
   if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
   if (e.key === 'd' || e.key === 'D' || e.key === 'ㅇ') {
-    document.body.classList.toggle('dev-mode');
-    const on = document.body.classList.contains('dev-mode');
-    toast(on ? '개발자 모드 켜짐 (D)' : '개발자 모드 꺼짐');
+    const on = !document.body.classList.contains('dev-mode');
+    setDevMode(on);
+    toast(on ? '개발자 모드 켜짐' : '개발자 모드 꺼짐');
   }
+});
+
+document.getElementById('dev-switch').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const on = !document.body.classList.contains('dev-mode');
+  setDevMode(on);
+  toast(on ? '개발자 모드 켜짐' : '개발자 모드 꺼짐');
 });
 
 // ═════ 메인 액션 버튼 ═════
@@ -2795,7 +2822,7 @@ function init() {
   applyAllRoomDesigns();
   setState('egg');
   updateHUD();
-  setTimeout(() => toast('디버그 메뉴는 D 키', 3500), 1800);
+  setTimeout(() => toast('빨간 스위치(또는 D키)로 개발자 모드', 3500), 1800);
 }
 init();
 requestAnimationFrame(loop);
