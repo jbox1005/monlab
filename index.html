@@ -107,14 +107,19 @@
   }
   .app { width: 100%; max-width: 100%; }
 
-  /* 작은 화면(실제 모바일 등) — 폰 프레임 숨김 */
+  /* 작은 화면(실제 모바일 등) — 폰 프레임 숨김, iOS 안전영역 처리 */
   @media (max-width: 460px) {
-    body { padding: 0; background: var(--bg); }
-    .phone-frame { background: var(--bg); box-shadow: none; padding: 0; border-radius: 0; }
+    body { padding: 0; background: #3d4838; }
+    .phone-frame { background: #3d4838; box-shadow: none; padding: 0; border-radius: 0; }
     .phone-notch, .phone-home-indicator { display: none; }
     .phone-screen {
-      border-radius: 0; width: 100vw; min-height: 100vh;
-      padding: 18px 14px;
+      border-radius: 0;
+      width: 100vw;
+      min-height: 100vh;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 14px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+      padding-left: 14px;
+      padding-right: 14px;
       background-image: none;
     }
   }
