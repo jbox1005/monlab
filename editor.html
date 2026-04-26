@@ -83,6 +83,31 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .char-card .active-toggle {
+    display: block;
+    margin: 8px 0 6px;
+    padding: 5px 8px;
+    font-size: 12px;
+    background: #2a2f24;
+    border: 1.5px solid #5a6850;
+    border-radius: 5px;
+    color: #b8a988;
+    cursor: pointer;
+    width: 100%;
+  }
+  .char-card.active .active-toggle {
+    background: #d8843e;
+    border-color: #8a4a20;
+    color: #fff;
+    cursor: default;
+  }
+  .char-card.active {
+    border-color: #d8843e;
+    box-shadow: 0 0 0 2px rgba(216, 132, 62, 0.3);
+  }
+  .char-card.active .char-thumb {
+    box-shadow: 0 0 12px rgba(216, 132, 62, 0.5);
+  }
 
   /* 캐릭터 에디터 */
   #char-editor h2 { margin-top: 0; }
@@ -463,6 +488,14 @@ const STATES = [
 ];
 const STORAGE_KEY = 'monlab_characters';
 const APPLIED_KEY = 'monlab_char_applied';
+const ACTIVE_KEY = 'monlab_active_char';
+
+function getActiveChar() {
+  return localStorage.getItem(ACTIVE_KEY) || '파리지옥';
+}
+function setActiveChar(name) {
+  localStorage.setItem(ACTIVE_KEY, name);
+}
 
 const DEFAULT_BEHAVIOR = {
   sleepStart: '21:00',
@@ -514,6 +547,19 @@ function loadAll() {
   if (!state.characters['파리지옥']) {
     state.characters['파리지옥'] = newCharacter();
     state.characters['파리지옥'].murmurs['청년기']['idle'] = ['흠...', '냠', '냠냠', '히잉~', '쿠우~', '쫑긋', '?', '...'];
+  }
+  // 까망이 기본 등록 (단계별 idle 이미지)
+  if (!state.characters['까망이']) {
+    const k = newCharacter();
+    k.images['유아기']['idle']   = 'assets/kkamangi_baby.png';
+    k.images['영아기']['idle']   = 'assets/kkamangi_infant.png';
+    k.images['청소년기']['idle'] = 'assets/kkamangi_teen.png';
+    k.images['청년기']['idle']   = 'assets/kkamangi_adult.png';
+    k.images['노년기']['idle']   = 'assets/kkamangi_elder.png';
+    k.murmurs['청년기']['idle'] = ['크르릉', '뱉어버려야지', '냠?!', '맛있겠다', '...어흥'];
+    k.murmurs['유아기']['idle'] = ['아옹', '쥐알머리', '뽁!'];
+    k.murmurs['노년기']['idle'] = ['음음...', '옛날엔...', '뼈가 시리는구먼'];
+    state.characters['까망이'] = k;
   }
 }
 
@@ -624,22 +670,32 @@ function showEditor(name) {
 function renderCharGrid() {
   const grid = document.getElementById('char-grid');
   grid.innerHTML = '';
+  const active = getActiveChar();
   Object.keys(state.characters).forEach(name => {
     const c = state.characters[name];
     const card = document.createElement('div');
-    card.className = 'char-card';
+    card.className = 'char-card' + (active === name ? ' active' : '');
     const thumb = c.images['청년기'] && c.images['청년기']['idle'];
+    const isActive = active === name;
     card.innerHTML = `
       <div class="char-thumb">${thumb ? `<img src="${thumb}">` : '🌱'}</div>
       <div class="char-name">${name}</div>
+      <button class="active-toggle">${isActive ? '★ 테스트용' : '테스트용으로 설정'}</button>
       <button class="char-delete">삭제</button>
     `;
     card.addEventListener('click', (e) => {
       if (e.target.classList.contains('char-delete')) {
         if (confirm(name + ' 캐릭터를 삭제할까요?')) {
+          if (active === name) setActiveChar('파리지옥');
           delete state.characters[name];
           saveAll();
           renderCharGrid();
+        }
+      } else if (e.target.classList.contains('active-toggle')) {
+        if (active !== name) {
+          setActiveChar(name);
+          renderCharGrid();
+          toast(name + '이(가) 테스트용으로 설정됨');
         }
       } else {
         showEditor(name);

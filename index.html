@@ -1067,7 +1067,7 @@
     <div class="title-banner">
       <img class="title-leaves left" src="assets/title_leaves.png">
       <div class="banner-bg">
-        <h2>파리지옥이의 방</h2>
+        <h2 id="room-title">파리지옥이의 방</h2>
       </div>
       <img class="title-leaves right" src="assets/title_leaves.png">
     </div>
@@ -1323,13 +1323,28 @@ const STAGE_IMAGES = {
 
 // ═════ 에디터 설정 로딩 (관리자 에디터에서 저장한 데이터) ═════
 let EDITOR_CHAR = null;
+let EDITOR_CHAR_NAME = '파리지옥';
 try {
+  EDITOR_CHAR_NAME = localStorage.getItem('monlab_active_char') || '파리지옥';
   const _raw = localStorage.getItem('monlab_characters');
   if (_raw) {
     const _data = JSON.parse(_raw);
-    EDITOR_CHAR = _data['파리지옥'] || null;
+    EDITOR_CHAR = _data[EDITOR_CHAR_NAME] || _data['파리지옥'] || null;
   }
 } catch(e) { console.warn('editor config load failed:', e); }
+console.log('[MonLab] active character:', EDITOR_CHAR_NAME);
+
+// 한글 받침에 따라 '이' 추가 (예: 파리지옥 → 파리지옥이, 까망이 → 까망이)
+function nameWithYi(name) {
+  if (!name) return name;
+  if (name.endsWith('이')) return name;
+  const last = name.charCodeAt(name.length - 1);
+  if (last >= 0xAC00 && last <= 0xD7A3) {
+    if ((last - 0xAC00) % 28 !== 0) return name + '이';
+  }
+  return name;
+}
+const CHAR_DISPLAY = nameWithYi(EDITOR_CHAR_NAME);
 
 function resolveStageStateImage(stage, stateName) {
   if (EDITOR_CHAR && EDITOR_CHAR.images) {
@@ -1396,7 +1411,7 @@ function updateStageFromLife() {
     if (sel) sel.value = next;
     if (next === '사망' && !GAME.isDead) {
       GAME.isDead = true;
-      toast(`파리지옥이 사망했어요... (${getDayCount()}일차, 엔딩 시스템 미구현)`, 5000);
+      toast(`${CHAR_DISPLAY} 사망했어요... (${getDayCount()}일차, 엔딩 시스템 미구현)`, 5000);
     } else {
       if (prev === '알' && next === '유아기') {
         toast('알이 부화했어요!', 2500);
@@ -2095,7 +2110,7 @@ function tickGame(realDt) {
       // 깨어났는데 불이 꺼져있으면 파리지옥이 자동으로 불을 켬
       if (!GAME.lightOn) {
         setLight(true);
-        toast('파리지옥이 불을 켰어요');
+        toast(`${CHAR_DISPLAY} 불을 켰어요`);
       }
     }
   }
@@ -2758,10 +2773,10 @@ document.querySelectorAll('[data-main]').forEach(btn => {
       return;
     }
     if (GAME.stage === '알') { toast('아직 알이에요'); return; }
-    if (GAME.stage === '사망') { toast('파리지옥이 이미 떠났어요'); return; }
+    if (GAME.stage === '사망') { toast(`${CHAR_DISPLAY} 이미 떠났어요`); return; }
     if (action === 'feed') {
       if (isSleepTime(GAME.gameMinutes)) { toast('지금은 자고 있어요'); return; }
-      if (GAME.hunger >= 4 - 0.01) { toast('파리지옥이 배불러해요!'); return; }
+      if (GAME.hunger >= 4 - 0.01) { toast(`${CHAR_DISPLAY} 배불러해요!`); return; }
       if (GAME.playActive) return;
       setState('eat');
     } else if (action === 'play') {
@@ -2877,6 +2892,9 @@ function init() {
   applyAllRoomDesigns();
   setState('egg');
   updateHUD();
+  // 활성 캐릭터 이름으로 타이틀 갱신
+  const titleEl = document.getElementById('room-title');
+  if (titleEl) titleEl.textContent = CHAR_DISPLAY + '의 방';
   setTimeout(() => toast('빨간 스위치(또는 D키)로 개발자 모드', 3500), 1800);
 }
 init();
