@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "_comment": "목적 뱃지 자동 부여 규칙. 위에서부터 평가하며 조건을 만족하면 뱃지를 부여합니다. 한 가게가 여러 뱃지를 가질 수 있습니다(예: 점심+회식).",
+  "purpose_badges": [
+    {
+      "code": "LUNCH",
+      "name": "점심식사",
+      "desc": "평일 점심에 갈 수 있는 곳. 가격은 뱃지가 아니라 price_range 필터로 거른다(뱃지에 가격을 섞으면 규칙이 쉽게 깨짐).",
+      "auto_rule": {
+        "all": [
+          {
+            "field": "hours.lunch_open",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "field": "categories_l1",
+            "op": "not_in",
+            "value": [
+              "CAF"
+            ]
+          },
+          {
+            "field": "biz.license_type",
+            "op": "ne",
+            "value": "유흥주점영업"
+          }
+        ]
+      }
+    },
+    {
+      "code": "CAFE",
+      "name": "식후 카페",
+      "desc": "밥 먹고 커피 한 잔. 카페/디저트 카테고리를 실제로 보유해야 한다(휴게음식점 인허가만으로는 분식집까지 딸려온다).",
+      "auto_rule": {
+        "any": [
+          {
+            "field": "categories_l1",
+            "op": "contains",
+            "value": "CAF"
+          }
+        ]
+      }
+    },
+    {
+      "code": "DINNER",
+      "name": "회식장소",
+      "desc": "술을 팔고 단체가 앉을 수 있는 곳.",
+      "auto_rule": {
+        "all": [
+          {
+            "field": "facility.serves_alcohol",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "any": [
+              {
+                "field": "facility.private_room",
+                "op": "eq",
+                "value": "YES"
+              },
+              {
+                "field": "facility.group_capacity_max",
+                "op": "gte",
+                "value": 8
+              },
+              {
+                "field": "vibe.tags",
+                "op": "contains",
+                "value": "단체석"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "alcohol_inference": {
+    "_comment": "주류판매 여부 1차 추정. 인허가 종별과 업태로 판단하며, BAR_* 카테고리는 무조건 true.",
+    "license_type_true": [
+      "단란주점영업",
+      "유흥주점영업"
+    ],
+    "uptae_true": [
+      "호프/통닭",
+      "정종/대포집/소주방",
+      "탁주(막걸리)",
+      "간이주점",
+      "룸살롱"
+    ],
+    "category_l1_true": [
+      "BAR"
+    ],
+    "license_type_false": [
+      "휴게음식점"
+    ],
+    "default": "unknown",
+    "menu_keywords_true": [
+      "소주",
+      "맥주",
+      "생맥주",
+      "하이볼",
+      "사케",
+      "청하",
+      "막걸리",
+      "동동주",
+      "전통주",
+      "와인",
+      "위스키",
+      "칵테일",
+      "고량주",
+      "파인트",
+      "이슬",
+      "테라",
+      "카스",
+      "안주"
+    ]
+  },
+  "vibe_tags": {
+    "_comment": "허용 분위기 태그 화이트리스트. 자유입력을 막아 필터가 깨지지 않게 합니다.",
+    "allowed": [
+      "조용한",
+      "시끌벅적",
+      "모던",
+      "레트로",
+      "노포",
+      "깔끔한",
+      "아늑한",
+      "가성비",
+      "고급스러운",
+      "단체석",
+      "1인석",
+      "야외석",
+      "루프탑",
+      "뷰맛집",
+      "인테리어좋음",
+      "혼밥가능",
+      "접대용",
+      "데이트"
+    ]
+  },
+  "waiting_levels": {
+    "NONE": {
+      "label": "없음",
+      "desc": "대기 거의 없음"
+    },
+    "LOW": {
+      "label": "보통",
+      "desc": "피크에만 5~10분"
+    },
+    "HIGH": {
+      "label": "많음",
+      "desc": "피크 15~30분 대기"
+    },
+    "EXTREME": {
+      "label": "매우많음",
+      "desc": "상시 30분 이상, 웨이팅 필수"
+    },
+    "UNKNOWN": {
+      "label": "미확인",
+      "desc": "정보 없음"
+    }
+  },
+  "enum_tri_state": {
+    "_comment": "예약/룸/테이블링/콜키지 등 3상태 필드 공통 코드값",
+    "YES": "가능",
+    "NO": "불가",
+    "COND": "조건부",
+    "UNKNOWN": "미확인"
+  },
+  "field_tiers": {
+    "_comment": "각 필드를 어떻게 채우는지. AUTO=수집으로 채워짐, SEMI=리뷰/텍스트 추출 필요, MANUAL=사람이 입력해야 함.",
+    "AUTO": [
+      "name",
+      "address",
+      "coord",
+      "phone",
+      "biz",
+      "zone",
+      "status",
+      "distance.ibk_hq",
+      "distance.ibk_finance_tower",
+      "categories",
+      "primary_category",
+      "links"
+    ],
+    "SEMI": [
+      "menus",
+      "price_range",
+      "hours",
+      "waiting",
+      "vibe.tags",
+      "facility.serves_alcohol",
+      "facility.parking"
+    ],
+    "MANUAL": [
+      "facility.reservation",
+      "facility.private_room",
+      "facility.room_capacity_max",
+      "facility.tabling",
+      "facility.waiting_apps",
+      "facility.corkage",
+      "facility.corkage_fee",
+      "facility.group_capacity_max",
+      "vibe.mood",
+      "menus[].is_signature",
+      "purpose_badges_override"
+    ]
+  },
+  "_note_lunch_price": "점심 예산 필터는 price_range.lunch_per_person 으로 UI에서 처리하세요. 과거 버전은 18000원 상한을 뱃지 조건에 넣었으나, 22000원짜리 점심반상 같은 정상 케이스가 탈락해 분리했습니다."
+}

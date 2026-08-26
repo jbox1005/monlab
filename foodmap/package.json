@@ -1,0 +1,22 @@
+{
+  "name": "foodmap-collect",
+  "version": "1.0.0",
+  "private": true,
+  "description": "종각/종로/명동/을지로 음식점·카페·주점 데이터 수집 및 사내 반입 파일 생성",
+  "scripts": {
+    "geocode": "node scripts/geocode-anchors.js",
+    "collect": "node scripts/collect.js",
+    "enrich": "node scripts/enrich.js",
+    "verify": "node scripts/verify.js",
+    "build": "node scripts/build.js",
+    "validate": "node scripts/validate.js",
+    "all": "npm run collect && npm run enrich && npm run verify && npm run build",
+    "sample": "node scripts/make-sample.js"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "iconv-lite": "^0.6.3",
+    "proj4": "^2.11.0"
+  }
+}

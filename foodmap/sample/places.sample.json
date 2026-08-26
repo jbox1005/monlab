@@ -1,0 +1,2858 @@
+[
+  {
+    "id": "SMP-00001",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종각손칼국수",
+    "name_legal": "종각손칼국수",
+    "branch": null,
+    "status": "영업",
+    "zone": "종각",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5709,
+      "lng": 126.9817
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "KOR_KALGUKSU"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_KALGUKSU",
+    "menus": [
+      {
+        "name": "바지락칼국수",
+        "price": 10000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_KALGUKSU"
+      },
+      {
+        "name": "들깨칼국수",
+        "price": 11000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_KALGUKSU"
+      },
+      {
+        "name": "왕만두",
+        "price": 7000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_MANDU"
+      },
+      {
+        "name": "겉절이보쌈",
+        "price": 18000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JOKBAL"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 11000,
+      "dinner_per_person": 14000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 12,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "노포",
+      "tags": [
+        "가성비",
+        "노포",
+        "혼밥가능"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "11:50-13:10",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "10:30",
+      "close": "21:00",
+      "break_time": "15:00-16:30",
+      "last_order": "20:20",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 1009,
+        "walk_min": 16,
+        "straight_m": 747,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 1007,
+        "walk_min": 16,
+        "straight_m": 746,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "점심 피크에 웨이팅. 11시 40분 전 도착 권장."
+  },
+  {
+    "id": "SMP-00002",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종각커피로스터스",
+    "name_legal": "종각커피로스터스",
+    "branch": null,
+    "status": "영업",
+    "zone": "종각",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5695,
+      "lng": 126.9838
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "휴게음식점",
+      "license_category": "까페",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "CAFE"
+    ],
+    "categories": [
+      "CAF_COFFEE"
+    ],
+    "categories_l1": [
+      "CAF"
+    ],
+    "primary_category": "CAF_COFFEE",
+    "menus": [
+      {
+        "name": "아메리카노",
+        "price": 4500,
+        "price_note": null,
+        "is_signature": true,
+        "category": "CAF_COFFEE"
+      },
+      {
+        "name": "콜드브루",
+        "price": 5500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_COFFEE"
+      },
+      {
+        "name": "플랫화이트",
+        "price": 5000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      },
+      {
+        "name": "스콘",
+        "price": 4000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_BAKERY"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 5500,
+      "dinner_per_person": null,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "UNKNOWN",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 4,
+      "serves_alcohol": false,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "모던",
+      "tags": [
+        "조용한",
+        "1인석",
+        "인테리어좋음"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": "13:00-13:40",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "08:00",
+      "close": "21:00",
+      "break_time": null,
+      "last_order": "20:30",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 683,
+        "walk_min": 11,
+        "straight_m": 506,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 681,
+        "walk_min": 11,
+        "straight_m": 504,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "식후 커피 수요 몰리는 13시 전후 자리 부족."
+  },
+  {
+    "id": "SMP-00003",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종각이자카야 마루",
+    "name_legal": "종각이자카야 마루",
+    "branch": null,
+    "status": "영업",
+    "zone": "종각",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5712,
+      "lng": 126.9836
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "일식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "JPN_IZAKAYA"
+    ],
+    "categories_l1": [
+      "JPN"
+    ],
+    "primary_category": "JPN_IZAKAYA",
+    "menus": [
+      {
+        "name": "모듬사시미",
+        "price": 48000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "JPN_IZAKAYA"
+      },
+      {
+        "name": "야키토리 5종",
+        "price": 22000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "JPN_IZAKAYA"
+      },
+      {
+        "name": "명란계란말이",
+        "price": 14000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_POCHA"
+      },
+      {
+        "name": "하이볼",
+        "price": 8000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "JPN_IZAKAYA"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 38000,
+      "level": "₩₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "2일 전까지 전화 예약",
+      "private_room": "YES",
+      "room_capacity_max": 12,
+      "tabling": "YES",
+      "waiting_apps": [
+        "캐치테이블"
+      ],
+      "corkage": "COND",
+      "corkage_fee": 20000,
+      "corkage_note": "와인 1병까지 병당 2만원",
+      "group_capacity_max": 20,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "모던",
+      "tags": [
+        "단체석",
+        "접대용",
+        "아늑한"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "17:00",
+      "close": "01:00",
+      "break_time": null,
+      "last_order": "24:00",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 891,
+        "walk_min": 14,
+        "straight_m": 660,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 873,
+        "walk_min": 14,
+        "straight_m": 647,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "룸 2개 보유, 회식 12인까지."
+  },
+  {
+    "id": "SMP-00004",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종각백반집",
+    "name_legal": "종각백반집",
+    "branch": null,
+    "status": "영업",
+    "zone": "종각",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5688,
+      "lng": 126.9824
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "KOR_BAEKBAN"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_BAEKBAN",
+    "menus": [
+      {
+        "name": "제육볶음정식",
+        "price": 9000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_BAEKBAN"
+      },
+      {
+        "name": "김치찌개",
+        "price": 8000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_BAEKBAN"
+      },
+      {
+        "name": "고등어구이정식",
+        "price": 10000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_BAEKBAN"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 9000,
+      "dinner_per_person": 11000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "UNKNOWN",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 8,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "가성비",
+        "혼밥가능",
+        "시끌벅적"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "12:00-13:00",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "07:00",
+      "close": "20:00",
+      "break_time": null,
+      "last_order": "19:30",
+      "holiday": "토·일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 757,
+        "walk_min": 12,
+        "straight_m": 561,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 774,
+        "walk_min": 12,
+        "straight_m": 574,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00005",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종로설렁탕",
+    "name_legal": "종로설렁탕",
+    "branch": null,
+    "status": "영업",
+    "zone": "종로",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.572,
+      "lng": 126.9931
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "KOR_GUKBAP"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_GUKBAP",
+    "menus": [
+      {
+        "name": "설렁탕",
+        "price": 12000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_GUKBAP"
+      },
+      {
+        "name": "도가니탕",
+        "price": 18000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_GUKBAP"
+      },
+      {
+        "name": "수육",
+        "price": 35000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 12000,
+      "dinner_per_person": 16000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "COND",
+      "reservation_note": "6인 이상 단체만",
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 30,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "노포",
+      "tags": [
+        "노포",
+        "단체석",
+        "혼밥가능"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "06:00",
+      "close": "22:00",
+      "break_time": null,
+      "last_order": "21:30",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 1037,
+        "walk_min": 17,
+        "straight_m": 768,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 960,
+        "walk_min": 15,
+        "straight_m": 711,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00006",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종로왕족발",
+    "name_legal": "종로왕족발",
+    "branch": null,
+    "status": "영업",
+    "zone": "종로",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5705,
+      "lng": 126.9934
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "KOR_JOKBAL"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_JOKBAL",
+    "menus": [
+      {
+        "name": "족발 중",
+        "price": 38000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_JOKBAL"
+      },
+      {
+        "name": "보쌈 중",
+        "price": 36000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JOKBAL"
+      },
+      {
+        "name": "막국수",
+        "price": 9000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JOKBAL"
+      },
+      {
+        "name": "소주",
+        "price": 5000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_POCHA"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 22000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "전화 예약",
+      "private_room": "YES",
+      "room_capacity_max": 10,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "YES",
+      "corkage_fee": 0,
+      "corkage_note": "콜키지 프리",
+      "group_capacity_max": 24,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "시끌벅적",
+      "tags": [
+        "단체석",
+        "시끌벅적",
+        "가성비"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "16:00",
+      "close": "02:00",
+      "break_time": null,
+      "last_order": "01:00",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 890,
+        "walk_min": 14,
+        "straight_m": 659,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 814,
+        "walk_min": 13,
+        "straight_m": 603,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "2층 룸 회식 10인까지."
+  },
+  {
+    "id": "SMP-00007",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종로노가리호프",
+    "name_legal": "종로노가리호프",
+    "branch": null,
+    "status": "영업",
+    "zone": "종로",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5728,
+      "lng": 126.9912
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "호프/통닭",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "BAR_HOF"
+    ],
+    "categories_l1": [
+      "BAR"
+    ],
+    "primary_category": "BAR_HOF",
+    "menus": [
+      {
+        "name": "생맥주 500",
+        "price": 4000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "BAR_HOF"
+      },
+      {
+        "name": "노가리",
+        "price": 3000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      },
+      {
+        "name": "후라이드치킨",
+        "price": 18000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_HOF"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 18000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 40,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "시끌벅적",
+      "tags": [
+        "야외석",
+        "시끌벅적",
+        "가성비",
+        "단체석"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "19:00-21:00",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "16:00",
+      "close": "01:00",
+      "break_time": null,
+      "last_order": "24:00",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 1033,
+        "walk_min": 16,
+        "straight_m": 765,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 960,
+        "walk_min": 15,
+        "straight_m": 711,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "야외 테이블 위주, 우천 시 좌석 급감."
+  },
+  {
+    "id": "SMP-00008",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종로평양냉면",
+    "name_legal": "종로평양냉면",
+    "branch": null,
+    "status": "영업",
+    "zone": "종로",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.571,
+      "lng": 126.9904
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "KOR_NAENGMYEON"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_NAENGMYEON",
+    "menus": [
+      {
+        "name": "평양냉면",
+        "price": 15000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_NAENGMYEON"
+      },
+      {
+        "name": "비빔냉면",
+        "price": 15000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_NAENGMYEON"
+      },
+      {
+        "name": "수육",
+        "price": 32000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      },
+      {
+        "name": "녹두전",
+        "price": 14000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JEON"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 15000,
+      "dinner_per_person": 20000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "YES",
+      "waiting_apps": [
+        "테이블링"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 6,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "정갈",
+      "tags": [
+        "노포",
+        "깔끔한"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "EXTREME",
+      "peak_time": "11:40-14:00",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:00",
+      "close": "20:30",
+      "break_time": "15:30-17:00",
+      "last_order": "20:00",
+      "holiday": "둘째·넷째 주 월요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 747,
+        "walk_min": 12,
+        "straight_m": 554,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 674,
+        "walk_min": 11,
+        "straight_m": 499,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "테이블링 원격 등록 가능. 피크 40분 이상 대기."
+  },
+  {
+    "id": "SMP-00009",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "종로디저트살롱",
+    "name_legal": "종로디저트살롱",
+    "branch": null,
+    "status": "영업",
+    "zone": "종로",
+    "address": {
+      "road": "서울특별시 종로구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5724,
+      "lng": 126.9938
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "휴게음식점",
+      "license_category": "까페",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "CAFE"
+    ],
+    "categories": [
+      "CAF_DESSERT",
+      "CAF_COFFEE"
+    ],
+    "categories_l1": [
+      "CAF"
+    ],
+    "primary_category": "CAF_DESSERT",
+    "menus": [
+      {
+        "name": "말차빙수",
+        "price": 13000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "CAF_DESSERT"
+      },
+      {
+        "name": "얼그레이케이크",
+        "price": 7500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_BAKERY"
+      },
+      {
+        "name": "아메리카노",
+        "price": 4800,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_COFFEE"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": null,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "UNKNOWN",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 6,
+      "serves_alcohol": false,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "모던",
+      "tags": [
+        "데이트",
+        "인테리어좋음",
+        "조용한"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:00",
+      "close": "22:00",
+      "break_time": null,
+      "last_order": "21:20",
+      "holiday": "월요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 1135,
+        "walk_min": 18,
+        "straight_m": 840,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 1058,
+        "walk_min": 17,
+        "straight_m": 784,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00010",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "명동돈카츠",
+    "name_legal": "명동돈카츠",
+    "branch": null,
+    "status": "영업",
+    "zone": "명동",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5616,
+      "lng": 126.9869
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "일식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "JPN_DONKATSU"
+    ],
+    "categories_l1": [
+      "JPN"
+    ],
+    "primary_category": "JPN_DONKATSU",
+    "menus": [
+      {
+        "name": "등심돈카츠",
+        "price": 13000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "JPN_DONKATSU"
+      },
+      {
+        "name": "모둠카츠",
+        "price": 17000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      },
+      {
+        "name": "카레돈카츠",
+        "price": 14000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "JPN_DONKATSU"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 13000,
+      "dinner_per_person": 15000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "YES",
+      "waiting_apps": [
+        "테이블링"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 6,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "깔끔한",
+        "혼밥가능",
+        "1인석"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "12:00-13:30",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:00",
+      "close": "21:00",
+      "break_time": "15:00-17:00",
+      "last_order": "20:20",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 732,
+        "walk_min": 12,
+        "straight_m": 542,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 801,
+        "walk_min": 13,
+        "straight_m": 593,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00011",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "명동손만두",
+    "name_legal": "명동손만두",
+    "branch": null,
+    "status": "영업",
+    "zone": "명동",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5598,
+      "lng": 126.9866
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "KOR_MANDU"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_MANDU",
+    "menus": [
+      {
+        "name": "고기만두",
+        "price": 8000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_MANDU"
+      },
+      {
+        "name": "김치만두",
+        "price": 8000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_MANDU"
+      },
+      {
+        "name": "만둣국",
+        "price": 9500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_MANDU"
+      },
+      {
+        "name": "떡만둣국",
+        "price": 10000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_MANDU"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 9000,
+      "dinner_per_person": 11000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "UNKNOWN",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 8,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "가성비",
+        "혼밥가능"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "10:00",
+      "close": "21:00",
+      "break_time": null,
+      "last_order": "20:30",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 1005,
+        "walk_min": 16,
+        "straight_m": 744,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 1072,
+        "walk_min": 17,
+        "straight_m": 794,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00012",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "명동중화원",
+    "name_legal": "명동중화원",
+    "branch": null,
+    "status": "영업",
+    "zone": "명동",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5622,
+      "lng": 126.985
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "중국식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH",
+      "DINNER"
+    ],
+    "categories": [
+      "CHN_JJAJANG"
+    ],
+    "categories_l1": [
+      "CHN"
+    ],
+    "primary_category": "CHN_JJAJANG",
+    "menus": [
+      {
+        "name": "짜장면",
+        "price": 8000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CHN_JJAJANG"
+      },
+      {
+        "name": "삼선짬뽕",
+        "price": 12000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "CHN_JJAJANG"
+      },
+      {
+        "name": "탕수육 중",
+        "price": 25000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CHN_JJAJANG"
+      },
+      {
+        "name": "코스 A",
+        "price": 45000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CHN_COURSE"
+      },
+      {
+        "name": "고량주",
+        "price": 18000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 10000,
+      "dinner_per_person": 28000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "룸은 3일 전 예약",
+      "private_room": "YES",
+      "room_capacity_max": 16,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "COND",
+      "corkage_fee": 15000,
+      "corkage_note": "룸 이용 시에만 병당 1.5만원",
+      "group_capacity_max": 16,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "접대용",
+      "tags": [
+        "단체석",
+        "접대용",
+        "고급스러운"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "NONE",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:00",
+      "close": "22:00",
+      "break_time": "15:00-17:00",
+      "last_order": "21:00",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 725,
+        "walk_min": 12,
+        "straight_m": 537,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 800,
+        "walk_min": 13,
+        "straight_m": 593,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "룸 3개, 최대 16인."
+  },
+  {
+    "id": "SMP-00013",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "명동베이커리",
+    "name_legal": "명동베이커리",
+    "branch": null,
+    "status": "영업",
+    "zone": "명동",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5604,
+      "lng": 126.9847
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "휴게음식점",
+      "license_category": "까페",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "CAFE"
+    ],
+    "categories": [
+      "CAF_BAKERY",
+      "CAF_COFFEE"
+    ],
+    "categories_l1": [
+      "CAF"
+    ],
+    "primary_category": "CAF_BAKERY",
+    "menus": [
+      {
+        "name": "크루아상",
+        "price": 4200,
+        "price_note": null,
+        "is_signature": true,
+        "category": "CAF_BAKERY"
+      },
+      {
+        "name": "소금빵",
+        "price": 3500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_BAKERY"
+      },
+      {
+        "name": "아메리카노",
+        "price": 4500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CAF_COFFEE"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": null,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "UNKNOWN",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 4,
+      "serves_alcohol": false,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "혼밥가능",
+        "1인석"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "07:30",
+      "close": "20:00",
+      "break_time": null,
+      "last_order": "19:40",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 983,
+        "walk_min": 16,
+        "straight_m": 728,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 1057,
+        "walk_min": 17,
+        "straight_m": 783,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00014",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "명동와인바 셀라",
+    "name_legal": "명동와인바 셀라",
+    "branch": null,
+    "status": "영업",
+    "zone": "명동",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5625,
+      "lng": 126.9864
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "경양식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "BAR_WINE"
+    ],
+    "categories_l1": [
+      "BAR"
+    ],
+    "primary_category": "BAR_WINE",
+    "menus": [
+      {
+        "name": "글라스와인",
+        "price": 12000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_WINE"
+      },
+      {
+        "name": "치즈플래터",
+        "price": 32000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "BAR_WINE"
+      },
+      {
+        "name": "트러플파스타",
+        "price": 26000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "WST_PASTA"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 55000,
+      "level": "₩₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "캐치테이블 예약",
+      "private_room": "COND",
+      "room_capacity_max": 8,
+      "tabling": "YES",
+      "waiting_apps": [
+        "캐치테이블"
+      ],
+      "corkage": "YES",
+      "corkage_fee": 30000,
+      "corkage_note": "병당 3만원, 2병까지",
+      "group_capacity_max": 10,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "접대용",
+      "tags": [
+        "데이트",
+        "고급스러운",
+        "아늑한",
+        "조용한"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "NONE",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "17:00",
+      "close": "01:00",
+      "break_time": null,
+      "last_order": "24:00",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 616,
+        "walk_min": 10,
+        "straight_m": 456,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 688,
+        "walk_min": 11,
+        "straight_m": 510,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "프라이빗석 커튼 분리형."
+  },
+  {
+    "id": "SMP-00015",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로곱창골목",
+    "name_legal": "을지로곱창골목",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5669,
+      "lng": 126.9909
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "KOR_GOPCHANG"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_GOPCHANG",
+    "menus": [
+      {
+        "name": "소곱창",
+        "price": 22000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_GOPCHANG"
+      },
+      {
+        "name": "대창",
+        "price": 22000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_GOPCHANG"
+      },
+      {
+        "name": "곱창전골",
+        "price": 30000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_GOPCHANG"
+      },
+      {
+        "name": "소주",
+        "price": 5000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_POCHA"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 32000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "COND",
+      "reservation_note": "8인 이상만 예약",
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 20,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "시끌벅적",
+      "tags": [
+        "단체석",
+        "시끌벅적",
+        "노포"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "18:30-20:30",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "16:00",
+      "close": "24:00",
+      "break_time": null,
+      "last_order": "23:00",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 353,
+        "walk_min": 6,
+        "straight_m": 262,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 298,
+        "walk_min": 5,
+        "straight_m": 221,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00016",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로빈대떡",
+    "name_legal": "을지로빈대떡",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5655,
+      "lng": 126.993
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "탁주(막걸리)",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH",
+      "DINNER"
+    ],
+    "categories": [
+      "KOR_JEON",
+      "BAR_TRAD"
+    ],
+    "categories_l1": [
+      "KOR",
+      "BAR"
+    ],
+    "primary_category": "KOR_JEON",
+    "menus": [
+      {
+        "name": "녹두빈대떡",
+        "price": 13000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_JEON"
+      },
+      {
+        "name": "모듬전",
+        "price": 22000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JEON"
+      },
+      {
+        "name": "생막걸리",
+        "price": 6000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "BAR_TRAD"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 13000,
+      "dinner_per_person": 20000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 16,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "노포",
+      "tags": [
+        "노포",
+        "레트로",
+        "시끌벅적",
+        "단체석"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "HIGH",
+      "peak_time": "18:00-20:00",
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:30",
+      "close": "23:00",
+      "break_time": null,
+      "last_order": "22:20",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 610,
+        "walk_min": 10,
+        "straight_m": 452,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 581,
+        "walk_min": 9,
+        "straight_m": 430,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00017",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로한정식 미담",
+    "name_legal": "을지로한정식 미담",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5675,
+      "lng": 126.9924
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "한식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH",
+      "DINNER"
+    ],
+    "categories": [
+      "KOR_JEON"
+    ],
+    "categories_l1": [
+      "KOR"
+    ],
+    "primary_category": "KOR_JEON",
+    "menus": [
+      {
+        "name": "점심 반상",
+        "price": 22000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "KOR_JEON"
+      },
+      {
+        "name": "저녁 정식",
+        "price": 48000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JEON"
+      },
+      {
+        "name": "보리굴비정식",
+        "price": 35000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "KOR_JEON"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 22000,
+      "dinner_per_person": 48000,
+      "level": "₩₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "전일 예약 필수",
+      "private_room": "YES",
+      "room_capacity_max": 20,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "COND",
+      "corkage_fee": 20000,
+      "corkage_note": "룸 한정 병당 2만원",
+      "group_capacity_max": 20,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "정갈",
+      "tags": [
+        "접대용",
+        "조용한",
+        "고급스러운",
+        "단체석"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "NONE",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:30",
+      "close": "21:30",
+      "break_time": "14:30-17:30",
+      "last_order": "20:30",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 549,
+        "walk_min": 9,
+        "straight_m": 407,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 487,
+        "walk_min": 8,
+        "straight_m": 361,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "전 좌석 룸. 접대·팀 회식용."
+  },
+  {
+    "id": "SMP-00018",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로마라공방",
+    "name_legal": "을지로마라공방",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5649,
+      "lng": 126.9914
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "중국식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "CHN_MALA"
+    ],
+    "categories_l1": [
+      "CHN"
+    ],
+    "primary_category": "CHN_MALA",
+    "menus": [
+      {
+        "name": "마라탕",
+        "price": 12000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "CHN_MALA"
+      },
+      {
+        "name": "마라샹궈",
+        "price": 26000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CHN_MALA"
+      },
+      {
+        "name": "꿔바로우",
+        "price": 18000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "CHN_YOGURI"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 12000,
+      "dinner_per_person": 20000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "YES",
+      "waiting_apps": [
+        "테이블링"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 8,
+      "serves_alcohol": null,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "혼밥가능",
+        "가성비"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "11:00",
+      "close": "22:00",
+      "break_time": null,
+      "last_order": "21:30",
+      "holiday": "연중무휴"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 463,
+        "walk_min": 7,
+        "straight_m": 343,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 457,
+        "walk_min": 7,
+        "straight_m": 338,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  },
+  {
+    "id": "SMP-00019",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로수제맥주펍",
+    "name_legal": "을지로수제맥주펍",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.5672,
+      "lng": 126.9933
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "일반음식점",
+      "license_category": "호프/통닭",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "DINNER"
+    ],
+    "categories": [
+      "BAR_HOF"
+    ],
+    "categories_l1": [
+      "BAR"
+    ],
+    "primary_category": "BAR_HOF",
+    "menus": [
+      {
+        "name": "수제맥주 파인트",
+        "price": 9000,
+        "price_note": null,
+        "is_signature": true,
+        "category": "BAR_HOF"
+      },
+      {
+        "name": "피시앤칩스",
+        "price": 19000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      },
+      {
+        "name": "소시지플래터",
+        "price": 26000,
+        "price_note": null,
+        "is_signature": false,
+        "category": null
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": null,
+      "dinner_per_person": 30000,
+      "level": "₩₩"
+    },
+    "facility": {
+      "reservation": "YES",
+      "reservation_note": "6인 이상 예약 가능",
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "YES",
+      "waiting_apps": [
+        "캐치테이블"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 14,
+      "serves_alcohol": true,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "모던",
+      "tags": [
+        "단체석",
+        "인테리어좋음",
+        "루프탑"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": false,
+      "open": "17:00",
+      "close": "01:00",
+      "break_time": null,
+      "last_order": "24:00",
+      "holiday": "월요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 642,
+        "walk_min": 10,
+        "straight_m": 476,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 586,
+        "walk_min": 9,
+        "straight_m": 434,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": "루프탑 12석, 동절기 미운영."
+  },
+  {
+    "id": "SMP-00020",
+    "data_status": "SAMPLE",
+    "source": {
+      "localdata_mgtno": null,
+      "kakao_place_id": null,
+      "google_place_id": null,
+      "naver_place_url": null,
+      "collected_by": [
+        "manual"
+      ]
+    },
+    "name": "을지로김밥분식",
+    "name_legal": "을지로김밥분식",
+    "branch": null,
+    "status": "영업",
+    "zone": "을지로",
+    "address": {
+      "road": "서울특별시 중구 (샘플 주소 — 실주소 아님)",
+      "jibun": null,
+      "detail": null
+    },
+    "coord": {
+      "lat": 37.566,
+      "lng": 126.9935
+    },
+    "phone": null,
+    "biz": {
+      "license_type": "휴게음식점",
+      "license_category": "분식",
+      "license_date": null
+    },
+    "purpose_badges": [
+      "LUNCH"
+    ],
+    "categories": [
+      "SNK_BUNSIK"
+    ],
+    "categories_l1": [
+      "SNK"
+    ],
+    "primary_category": "SNK_BUNSIK",
+    "menus": [
+      {
+        "name": "참치김밥",
+        "price": 4500,
+        "price_note": null,
+        "is_signature": true,
+        "category": "JPN_SUSHI"
+      },
+      {
+        "name": "떡볶이",
+        "price": 5000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "SNK_BUNSIK"
+      },
+      {
+        "name": "라볶이",
+        "price": 6500,
+        "price_note": null,
+        "is_signature": false,
+        "category": "SNK_BUNSIK"
+      },
+      {
+        "name": "모둠튀김",
+        "price": 5000,
+        "price_note": null,
+        "is_signature": false,
+        "category": "SNK_BUNSIK"
+      }
+    ],
+    "price_range": {
+      "lunch_per_person": 6000,
+      "dinner_per_person": 7000,
+      "level": "₩"
+    },
+    "facility": {
+      "reservation": "NO",
+      "reservation_note": null,
+      "private_room": "NO",
+      "room_capacity_max": null,
+      "tabling": "NO",
+      "waiting_apps": [
+        "현장only"
+      ],
+      "corkage": "NO",
+      "corkage_fee": null,
+      "corkage_note": null,
+      "group_capacity_max": 4,
+      "serves_alcohol": false,
+      "parking": "UNKNOWN",
+      "takeout": null
+    },
+    "vibe": {
+      "mood": "캐주얼",
+      "tags": [
+        "가성비",
+        "혼밥가능"
+      ],
+      "note": null
+    },
+    "waiting": {
+      "level": "LOW",
+      "peak_time": null,
+      "note": null
+    },
+    "hours": {
+      "raw": null,
+      "lunch_open": true,
+      "open": "07:00",
+      "close": "20:00",
+      "break_time": null,
+      "last_order": "19:40",
+      "holiday": "일요일 휴무"
+    },
+    "distance": {
+      "ibk_hq": {
+        "meters": 657,
+        "walk_min": 10,
+        "straight_m": 487,
+        "method": "estimate"
+      },
+      "ibk_finance_tower": {
+        "meters": 619,
+        "walk_min": 10,
+        "straight_m": 458,
+        "method": "estimate"
+      }
+    },
+    "links": {
+      "kakao": null,
+      "naver": null,
+      "google": null
+    },
+    "verification": {
+      "in_google": null,
+      "in_kakao": null,
+      "match_score": null,
+      "match_method": null,
+      "confidence": "LOW"
+    },
+    "updated_at": "2026-08-26",
+    "note": null
+  }
+]

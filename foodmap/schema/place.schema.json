@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal/foodmap/place.schema.json",
+  "title": "Foodmap Place",
+  "description": "종각/종로/명동/을지로 4개 구역 음식점·카페·주점 반입 레코드",
+  "type": "object",
+  "required": ["id", "name", "zone", "coord", "address", "biz", "categories", "primary_category", "distance", "data_status", "updated_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(FM|SMP)-[0-9]{5}$",
+      "description": "내부 고유 ID. FM=실데이터, SMP=샘플."
+    },
+    "data_status": {
+      "type": "string",
+      "enum": ["SAMPLE", "DRAFT", "VERIFIED"],
+      "description": "SAMPLE=예시값(실제 업소 정보 아님), DRAFT=자동수집만 완료, VERIFIED=수동 검수 완료"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "localdata_mgtno": { "type": ["string", "null"], "description": "행안부 관리번호(MGTNO). 기본 모수 키." },
+        "kakao_place_id":  { "type": ["string", "null"] },
+        "google_place_id": { "type": ["string", "null"], "description": "구글 약관상 무기한 저장 가능한 유일한 구글 필드" },
+        "naver_place_url": { "type": ["string", "null"] },
+        "collected_by":    { "type": "array", "items": { "type": "string", "enum": ["localdata", "kakao", "google", "tourapi", "manual"] } }
+      }
+    },
+    "name":   { "type": "string", "minLength": 1, "description": "실제 간판 상호(카카오 우선, 없으면 행안부 사업장명)" },
+    "name_legal": { "type": ["string", "null"], "description": "행안부 인허가 상호(법인명 포함)" },
+    "branch": { "type": ["string", "null"], "description": "지점명" },
+    "status": { "type": "string", "enum": ["영업", "휴업", "폐업"], "default": "영업" },
+    "zone":   { "type": "string", "enum": ["종각", "종로", "명동", "을지로"] },
+    "address": {
+      "type": "object",
+      "required": ["road"],
+      "additionalProperties": false,
+      "properties": {
+        "road":   { "type": "string" },
+        "jibun":  { "type": ["string", "null"] },
+        "detail": { "type": ["string", "null"], "description": "층/호수" }
+      }
+    },
+    "coord": {
+      "type": "object",
+      "required": ["lat", "lng"],
+      "additionalProperties": false,
+      "properties": {
+        "lat": { "type": "number", "minimum": 37.5, "maximum": 37.62 },
+        "lng": { "type": "number", "minimum": 126.94, "maximum": 127.03 }
+      },
+      "description": "WGS84. 행안부 원본은 EPSG:5174 이므로 변환 후 저장."
+    },
+    "phone": { "type": ["string", "null"] },
+
+    "biz": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "license_type":     { "type": "string", "enum": ["일반음식점", "휴게음식점", "단란주점영업", "유흥주점영업", "제과점영업", "기타"] },
+        "license_category": { "type": ["string", "null"], "description": "행안부 업태구분명 (한식/호프·통닭/까페 등)" },
+        "license_date":     { "type": ["string", "null"], "format": "date" }
+      }
+    },
+
+    "purpose_badges": {
+      "type": "array",
+      "description": "목적별 필터용 뱃지. 복수 부여 가능.",
+      "items": { "type": "string", "enum": ["LUNCH", "CAFE", "DINNER"] },
+      "uniqueItems": true
+    },
+
+    "categories": {
+      "type": "array",
+      "description": "메뉴 카테고리 L2 코드 배열. 카테고리>메뉴>가게 탐색의 진입점.",
+      "items": { "type": "string", "pattern": "^[A-Z]{3}_[A-Z]+$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "categories_l1": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["KOR", "JPN", "CHN", "WST", "SNK", "ASN", "BAR", "CAF"] },
+      "uniqueItems": true
+    },
+    "primary_category": { "type": "string", "description": "대표 L2 코드" },
+
+    "menus": {
+      "type": "array",
+      "description": "대표메뉴. is_signature=true 인 항목이 가게 대표메뉴.",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name":         { "type": "string" },
+          "price":        { "type": ["integer", "null"], "minimum": 0, "description": "원 단위. null=가격미상/시가" },
+          "price_note":   { "type": ["string", "null"], "description": "시가, 1인분, 2인이상 주문 등" },
+          "is_signature": { "type": "boolean", "default": false },
+          "category":     { "type": ["string", "null"], "description": "해당 메뉴의 L2 코드" }
+        }
+      }
+    },
+    "price_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lunch_per_person":  { "type": ["integer", "null"] },
+        "dinner_per_person": { "type": ["integer", "null"] },
+        "level":             { "type": ["string", "null"], "enum": ["₩", "₩₩", "₩₩₩", "₩₩₩₩", null] }
+      }
+    },
+
+    "facility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reservation":        { "type": "string", "enum": ["YES", "NO", "COND", "UNKNOWN"], "default": "UNKNOWN", "description": "COND=단체만 가능/전화만 가능 등" },
+        "reservation_note":   { "type": ["string", "null"] },
+        "private_room":       { "type": "string", "enum": ["YES", "NO", "COND", "UNKNOWN"], "default": "UNKNOWN" },
+        "room_capacity_max":  { "type": ["integer", "null"], "description": "룸 최대 수용 인원" },
+        "tabling":            { "type": "string", "enum": ["YES", "NO", "UNKNOWN"], "default": "UNKNOWN", "description": "원격 웨이팅 등록 가능 여부" },
+        "waiting_apps":       { "type": "array", "items": { "type": "string", "enum": ["테이블링", "캐치테이블", "나우웨이팅", "현장only"] } },
+        "corkage":            { "type": "string", "enum": ["YES", "NO", "COND", "UNKNOWN"], "default": "UNKNOWN" },
+        "corkage_fee":        { "type": ["integer", "null"], "description": "병당 원. 0=무료" },
+        "corkage_note":       { "type": ["string", "null"] },
+        "group_capacity_max": { "type": ["integer", "null"], "description": "한 팀 최대 수용 인원" },
+        "serves_alcohol":     { "type": ["boolean", "null"] },
+        "parking":            { "type": "string", "enum": ["YES", "NO", "COND", "UNKNOWN"], "default": "UNKNOWN" },
+        "takeout":            { "type": ["boolean", "null"] }
+      }
+    },
+
+    "vibe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mood": { "type": ["string", "null"], "enum": ["캐주얼", "정갈", "시끌벅적", "모던", "노포", "접대용", null] },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "config/rules.json 의 vibe_tags.allowed 화이트리스트만 허용" },
+        "note": { "type": ["string", "null"], "maxLength": 200 }
+      }
+    },
+
+    "waiting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "level":     { "type": "string", "enum": ["NONE", "LOW", "HIGH", "EXTREME", "UNKNOWN"], "default": "UNKNOWN" },
+        "peak_time": { "type": ["string", "null"], "description": "예: 12:00-13:00" },
+        "note":      { "type": ["string", "null"] }
+      }
+    },
+
+    "hours": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw":        { "type": ["string", "null"] },
+        "lunch_open": { "type": ["boolean", "null"] },
+        "open":       { "type": ["string", "null"], "description": "HH:MM" },
+        "close":      { "type": ["string", "null"] },
+        "break_time": { "type": ["string", "null"] },
+        "last_order": { "type": ["string", "null"] },
+        "holiday":    { "type": ["string", "null"], "description": "예: 일요일 휴무" }
+      }
+    },
+
+    "distance": {
+      "type": "object",
+      "required": ["ibk_hq", "ibk_finance_tower"],
+      "additionalProperties": false,
+      "properties": {
+        "ibk_hq":            { "$ref": "#/$defs/walk" },
+        "ibk_finance_tower": { "$ref": "#/$defs/walk" }
+      }
+    },
+
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kakao":  { "type": ["string", "null"] },
+        "naver":  { "type": ["string", "null"] },
+        "google": { "type": ["string", "null"] }
+      },
+      "description": "외부 상세는 저장 대신 딥링크로. 구글 약관 캐싱 제한 회피."
+    },
+
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "in_google":       { "type": ["boolean", "null"], "description": "1회 교차검증에서 구글에도 존재했는지" },
+        "in_kakao":        { "type": ["boolean", "null"] },
+        "match_score":     { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "match_method":    { "type": ["string", "null"], "enum": ["name+coord", "coord_only", "name_only", "manual", null] },
+        "confidence":      { "type": "string", "enum": ["HIGH", "MEDIUM", "LOW"], "default": "LOW" }
+      }
+    },
+
+    "updated_at": { "type": "string", "format": "date" },
+    "note":       { "type": ["string", "null"] }
+  },
+
+  "$defs": {
+    "walk": {
+      "type": "object",
+      "required": ["meters", "walk_min"],
+      "additionalProperties": false,
+      "properties": {
+        "meters":   { "type": "integer", "minimum": 0, "description": "도보 추정거리(직선 x 우회계수 1.35)" },
+        "walk_min": { "type": "integer", "minimum": 0, "description": "도보 추정 소요분(67m/분 + 횡단보도 보정)" },
+        "straight_m": { "type": ["integer", "null"], "description": "직선거리 원값" },
+        "method":   { "type": "string", "enum": ["estimate", "api"], "default": "estimate" }
+      }
+    }
+  }
+}

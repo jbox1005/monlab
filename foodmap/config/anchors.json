@@ -1,0 +1,28 @@
+{
+  "_comment": "회사 기준점. coord_verified=false 인 좌표는 근사값이므로 `npm run geocode` 로 카카오 지오코딩 실행 후 자동 교체됩니다. 주소는 웹 확인 완료.",
+  "anchors": [
+    {
+      "key": "ibk_hq",
+      "name": "IBK기업은행 본점",
+      "address_road": "서울특별시 중구 을지로 79",
+      "address_jibun": "서울특별시 중구 을지로2가 50",
+      "coord": { "lat": 37.5664, "lng": 126.9880 },
+      "coord_verified": false
+    },
+    {
+      "key": "ibk_finance_tower",
+      "name": "IBK파이낸스타워",
+      "address_road": "서울특별시 중구 을지로 82",
+      "address_jibun": "서울특별시 중구 을지로2가 206",
+      "coord": { "lat": 37.5668, "lng": 126.9884 },
+      "coord_verified": false
+    }
+  ],
+  "walking": {
+    "_comment": "도보 거리는 직선거리에 우회계수를 곱해 추정합니다. mode=api 로 바꾸면 외부 보행경로 API를 사용하지만 사내망 오프라인에서는 estimate 권장.",
+    "mode": "estimate",
+    "detour_factor": 1.35,
+    "speed_m_per_min": 67,
+    "crossing_penalty_sec_per_100m": 6
+  }
+}

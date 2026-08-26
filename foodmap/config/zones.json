@@ -1,0 +1,16 @@
+{
+  "_comment": "대상 4개 구역. 중심좌표는 각 역 기준 근사값이며 radius_m 로 원형 필터. polygon 을 채우면 폴리곤 필터가 우선 적용됩니다.",
+  "zones": [
+    { "key": "jonggak",  "name": "종각",   "center": { "lat": 37.5701, "lng": 126.9829 }, "radius_m": 450, "polygon": [] },
+    { "key": "jongno",   "name": "종로",   "center": { "lat": 37.5714, "lng": 126.9920 }, "radius_m": 500, "polygon": [] },
+    { "key": "myeongdong","name": "명동",  "center": { "lat": 37.5609, "lng": 126.9860 }, "radius_m": 500, "polygon": [] },
+    { "key": "euljiro",  "name": "을지로", "center": { "lat": 37.5663, "lng": 126.9918 }, "radius_m": 500, "polygon": [] }
+  ],
+  "localdata_filter": {
+    "sido": "서울특별시",
+    "sigungu": ["종로구", "중구"],
+    "license_types_include": ["일반음식점", "휴게음식점", "단란주점영업", "유흥주점영업"],
+    "status_include": ["영업/정상", "영업"],
+    "uptae_exclude": ["다방", "출장조리", "위탁급식", "제과점영업", "편의점", "기타휴게음식점", "떡카페", "아이스크림"]
+  }
+}

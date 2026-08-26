@@ -1,0 +1,676 @@
+{
+  "version": "1.0",
+  "l1": [
+    {
+      "code": "KOR",
+      "name": "한식",
+      "shop_count": 9,
+      "l2": [
+        {
+          "code": "KOR_BAEKBAN",
+          "name": "백반/찌개",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "제육볶음정식",
+              "count": 1
+            },
+            {
+              "name": "김치찌개",
+              "count": 1
+            },
+            {
+              "name": "고등어구이정식",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00004",
+              "name": "종각백반집",
+              "zone": "종각",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 12,
+              "walk_min_ft": 12
+            }
+          ]
+        },
+        {
+          "code": "KOR_KALGUKSU",
+          "name": "칼국수",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "바지락칼국수",
+              "count": 1
+            },
+            {
+              "name": "들깨칼국수",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00001",
+              "name": "종각손칼국수",
+              "zone": "종각",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 16,
+              "walk_min_ft": 16
+            }
+          ]
+        },
+        {
+          "code": "KOR_MANDU",
+          "name": "만두",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "고기만두",
+              "count": 1
+            },
+            {
+              "name": "김치만두",
+              "count": 1
+            },
+            {
+              "name": "만둣국",
+              "count": 1
+            },
+            {
+              "name": "떡만둣국",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00011",
+              "name": "명동손만두",
+              "zone": "명동",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 16,
+              "walk_min_ft": 17
+            }
+          ]
+        },
+        {
+          "code": "KOR_JOKBAL",
+          "name": "족발/보쌈",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "족발 중",
+              "count": 1
+            },
+            {
+              "name": "보쌈 중",
+              "count": 1
+            },
+            {
+              "name": "막국수",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00006",
+              "name": "종로왕족발",
+              "zone": "종로",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 14,
+              "walk_min_ft": 13
+            }
+          ]
+        },
+        {
+          "code": "KOR_NAENGMYEON",
+          "name": "냉면",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "평양냉면",
+              "count": 1
+            },
+            {
+              "name": "비빔냉면",
+              "count": 1
+            },
+            {
+              "name": "수육",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00008",
+              "name": "종로평양냉면",
+              "zone": "종로",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 12,
+              "walk_min_ft": 11
+            }
+          ]
+        },
+        {
+          "code": "KOR_GUKBAP",
+          "name": "국밥/탕",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "설렁탕",
+              "count": 1
+            },
+            {
+              "name": "도가니탕",
+              "count": 1
+            },
+            {
+              "name": "수육",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00005",
+              "name": "종로설렁탕",
+              "zone": "종로",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 17,
+              "walk_min_ft": 15
+            }
+          ]
+        },
+        {
+          "code": "KOR_GOPCHANG",
+          "name": "곱창/막창",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "소곱창",
+              "count": 1
+            },
+            {
+              "name": "대창",
+              "count": 1
+            },
+            {
+              "name": "곱창전골",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00015",
+              "name": "을지로곱창골목",
+              "zone": "을지로",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 6,
+              "walk_min_ft": 5
+            }
+          ]
+        },
+        {
+          "code": "KOR_JEON",
+          "name": "전/한정식",
+          "shop_count": 2,
+          "menus": [
+            {
+              "name": "녹두빈대떡",
+              "count": 1
+            },
+            {
+              "name": "모듬전",
+              "count": 1
+            },
+            {
+              "name": "점심 반상",
+              "count": 1
+            },
+            {
+              "name": "저녁 정식",
+              "count": 1
+            },
+            {
+              "name": "보리굴비정식",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00017",
+              "name": "을지로한정식 미담",
+              "zone": "을지로",
+              "badges": [
+                "LUNCH",
+                "DINNER"
+              ],
+              "walk_min_hq": 9,
+              "walk_min_ft": 8
+            },
+            {
+              "id": "SMP-00016",
+              "name": "을지로빈대떡",
+              "zone": "을지로",
+              "badges": [
+                "LUNCH",
+                "DINNER"
+              ],
+              "walk_min_hq": 10,
+              "walk_min_ft": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "JPN",
+      "name": "일식",
+      "shop_count": 2,
+      "l2": [
+        {
+          "code": "JPN_IZAKAYA",
+          "name": "이자카야",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "모듬사시미",
+              "count": 1
+            },
+            {
+              "name": "야키토리 5종",
+              "count": 1
+            },
+            {
+              "name": "하이볼",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00003",
+              "name": "종각이자카야 마루",
+              "zone": "종각",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 14,
+              "walk_min_ft": 14
+            }
+          ]
+        },
+        {
+          "code": "JPN_DONKATSU",
+          "name": "돈카츠/덮밥",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "등심돈카츠",
+              "count": 1
+            },
+            {
+              "name": "모둠카츠",
+              "count": 1
+            },
+            {
+              "name": "카레돈카츠",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00010",
+              "name": "명동돈카츠",
+              "zone": "명동",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 12,
+              "walk_min_ft": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CHN",
+      "name": "중식",
+      "shop_count": 2,
+      "l2": [
+        {
+          "code": "CHN_JJAJANG",
+          "name": "짜장/짬뽕",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "짜장면",
+              "count": 1
+            },
+            {
+              "name": "삼선짬뽕",
+              "count": 1
+            },
+            {
+              "name": "탕수육 중",
+              "count": 1
+            },
+            {
+              "name": "고량주",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00012",
+              "name": "명동중화원",
+              "zone": "명동",
+              "badges": [
+                "LUNCH",
+                "DINNER"
+              ],
+              "walk_min_hq": 12,
+              "walk_min_ft": 13
+            }
+          ]
+        },
+        {
+          "code": "CHN_MALA",
+          "name": "마라/사천",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "마라탕",
+              "count": 1
+            },
+            {
+              "name": "마라샹궈",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00018",
+              "name": "을지로마라공방",
+              "zone": "을지로",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 7,
+              "walk_min_ft": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "SNK",
+      "name": "분식",
+      "shop_count": 1,
+      "l2": [
+        {
+          "code": "SNK_BUNSIK",
+          "name": "김밥/떡볶이",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "떡볶이",
+              "count": 1
+            },
+            {
+              "name": "라볶이",
+              "count": 1
+            },
+            {
+              "name": "모둠튀김",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00020",
+              "name": "을지로김밥분식",
+              "zone": "을지로",
+              "badges": [
+                "LUNCH"
+              ],
+              "walk_min_hq": 10,
+              "walk_min_ft": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BAR",
+      "name": "주점",
+      "shop_count": 4,
+      "l2": [
+        {
+          "code": "BAR_HOF",
+          "name": "호프/맥주",
+          "shop_count": 2,
+          "menus": [
+            {
+              "name": "생맥주 500",
+              "count": 1
+            },
+            {
+              "name": "노가리",
+              "count": 1
+            },
+            {
+              "name": "후라이드치킨",
+              "count": 1
+            },
+            {
+              "name": "수제맥주 파인트",
+              "count": 1
+            },
+            {
+              "name": "피시앤칩스",
+              "count": 1
+            },
+            {
+              "name": "소시지플래터",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00019",
+              "name": "을지로수제맥주펍",
+              "zone": "을지로",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 10,
+              "walk_min_ft": 9
+            },
+            {
+              "id": "SMP-00007",
+              "name": "종로노가리호프",
+              "zone": "종로",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 16,
+              "walk_min_ft": 15
+            }
+          ]
+        },
+        {
+          "code": "BAR_WINE",
+          "name": "와인바",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "글라스와인",
+              "count": 1
+            },
+            {
+              "name": "치즈플래터",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00014",
+              "name": "명동와인바 셀라",
+              "zone": "명동",
+              "badges": [
+                "DINNER"
+              ],
+              "walk_min_hq": 10,
+              "walk_min_ft": 11
+            }
+          ]
+        },
+        {
+          "code": "BAR_TRAD",
+          "name": "전통주점",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "생막걸리",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00016",
+              "name": "을지로빈대떡",
+              "zone": "을지로",
+              "badges": [
+                "LUNCH",
+                "DINNER"
+              ],
+              "walk_min_hq": 10,
+              "walk_min_ft": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "CAF",
+      "name": "카페/디저트",
+      "shop_count": 5,
+      "l2": [
+        {
+          "code": "CAF_COFFEE",
+          "name": "커피",
+          "shop_count": 3,
+          "menus": [
+            {
+              "name": "아메리카노",
+              "count": 3
+            },
+            {
+              "name": "콜드브루",
+              "count": 1
+            },
+            {
+              "name": "플랫화이트",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00002",
+              "name": "종각커피로스터스",
+              "zone": "종각",
+              "badges": [
+                "CAFE"
+              ],
+              "walk_min_hq": 11,
+              "walk_min_ft": 11
+            },
+            {
+              "id": "SMP-00013",
+              "name": "명동베이커리",
+              "zone": "명동",
+              "badges": [
+                "CAFE"
+              ],
+              "walk_min_hq": 16,
+              "walk_min_ft": 17
+            },
+            {
+              "id": "SMP-00009",
+              "name": "종로디저트살롱",
+              "zone": "종로",
+              "badges": [
+                "CAFE"
+              ],
+              "walk_min_hq": 18,
+              "walk_min_ft": 17
+            }
+          ]
+        },
+        {
+          "code": "CAF_BAKERY",
+          "name": "베이커리",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "크루아상",
+              "count": 1
+            },
+            {
+              "name": "소금빵",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00013",
+              "name": "명동베이커리",
+              "zone": "명동",
+              "badges": [
+                "CAFE"
+              ],
+              "walk_min_hq": 16,
+              "walk_min_ft": 17
+            }
+          ]
+        },
+        {
+          "code": "CAF_DESSERT",
+          "name": "디저트",
+          "shop_count": 1,
+          "menus": [
+            {
+              "name": "말차빙수",
+              "count": 1
+            }
+          ],
+          "shops": [
+            {
+              "id": "SMP-00009",
+              "name": "종로디저트살롱",
+              "zone": "종로",
+              "badges": [
+                "CAFE"
+              ],
+              "walk_min_hq": 18,
+              "walk_min_ft": 17
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
