@@ -11,7 +11,9 @@
     "build": "node scripts/build.js",
     "validate": "node scripts/validate.js",
     "all": "npm run collect && npm run enrich && npm run verify && npm run build",
-    "sample": "node scripts/make-sample.js"
+    "sample": "node scripts/make-sample.js",
+    "worklist": "node scripts/make-worklist.js",
+    "merge": "node scripts/merge-manual.js"
   },
   "dependencies": {
     "ajv": "^8.20.0",

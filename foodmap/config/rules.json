@@ -170,7 +170,7 @@
     "UNKNOWN": "미확인"
   },
   "field_tiers": {
-    "_comment": "각 필드를 어떻게 채우는지. AUTO=수집으로 채워짐, SEMI=리뷰/텍스트 추출 필요, MANUAL=사람이 입력해야 함.",
+    "_comment": "AUTO=수집 파이프라인이 채움, SEMI=수집 결과에서 부분 추출 후 검수, MANUAL=주기 수동 배치로만 채워짐(scripts/make-worklist.js).",
     "AUTO": [
       "name",
       "address",
@@ -186,27 +186,52 @@
       "links"
     ],
     "SEMI": [
-      "menus",
-      "price_range",
       "hours",
-      "waiting",
-      "vibe.tags",
       "facility.serves_alcohol",
-      "facility.parking"
+      "facility.parking",
+      "facility.takeout",
+      "menus[].name"
     ],
     "MANUAL": [
       "facility.reservation",
+      "facility.reservation_note",
       "facility.private_room",
       "facility.room_capacity_max",
       "facility.tabling",
       "facility.waiting_apps",
       "facility.corkage",
       "facility.corkage_fee",
+      "facility.corkage_note",
       "facility.group_capacity_max",
-      "vibe.mood",
+      "menus[].price",
       "menus[].is_signature",
-      "purpose_badges_override"
+      "price_range.lunch_per_person",
+      "price_range.dinner_per_person",
+      "price_range.level",
+      "vibe.mood",
+      "vibe.tags",
+      "waiting.level",
+      "waiting.peak_time"
     ]
   },
-  "_note_lunch_price": "점심 예산 필터는 price_range.lunch_per_person 으로 UI에서 처리하세요. 과거 버전은 18000원 상한을 뱃지 조건에 넣었으나, 22000원짜리 점심반상 같은 정상 케이스가 탈락해 분리했습니다."
+  "_note_lunch_price": "점심 예산 필터는 price_range.lunch_per_person 으로 UI에서 처리하세요. 과거 버전은 18000원 상한을 뱃지 조건에 넣었으나, 22000원짜리 점심반상 같은 정상 케이스가 탈락해 분리했습니다.",
+  "manual_batch": {
+    "_comment": "수동 수집 배치 설정",
+    "batch_size": 25,
+    "stale_months": 6,
+    "stale_months_volatile": 3,
+    "volatile_fields": [
+      "menus[].price",
+      "price_range.lunch_per_person",
+      "price_range.dinner_per_person",
+      "waiting.level",
+      "facility.corkage_fee"
+    ],
+    "require_source_when_filled": true,
+    "priority": [
+      "뱃지 보유",
+      "기준점 도보 10분 이내",
+      "MANUAL 미채움 필드 수 많은 순"
+    ]
+  }
 }

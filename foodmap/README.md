@@ -14,6 +14,8 @@
 | `sample/places.sample.json` | **반입 샘플 20건** (JSON 정본 형식) |
 | `sample/places.sample.csv` | 같은 20건의 평탄화 CSV (UTF-8 BOM) |
 | `sample/taxonomy_index.sample.json` | 카테고리 > 메뉴 > 가게 3단 탐색 인덱스 |
+| `docs/HANDOFF.md` | **다른 Claude 세션에서 수집을 이어받을 때 읽을 문서** |
+| `docs/MANUAL_COLLECTION.md` | 수동 수집 프로토콜 (필드별 판정 기준) |
 | `schema/place.schema.json` | JSON Schema (draft 2020-12) |
 | `schema/CODEBOOK.md` | **모든 코드값 정의 — 먼저 읽을 것** |
 
@@ -118,13 +120,59 @@ npm run validate                 # 반입 전 스키마 게이트
 
 ---
 
-## 자동으로 안 채워지는 필드
+## 수동 수집 배치 (MANUAL 필드)
 
-요청 필드 중 **예약가능 / 룸유무 / 테이블링 / 콜키지 / 대표메뉴 가격 / 분위기 / 웨이팅** 7개는
-행안부·카카오·구글 어디에도 없다. 반드시 사람이 채워야 한다.
+예약가능 / 룸 / 테이블링 / 콜키지 / 대표메뉴 가격 / 분위기 / 웨이팅 — 이 계열 19개 필드는
+행안부·카카오·구글 어디에도 없다. **주기 배치로 Claude가 조사해서 채운다.**
 
-`schema/CODEBOOK.md` 의 **1. 필드 채움 등급** 표에 AUTO / SEMI / MANUAL 로 정리해 두었다.
-운영 방식은 최초 1회 수동 입력 후 사내 사용자 제보로 갱신하는 것을 권한다.
+```
+npm run worklist                  # 작업지시서 생성
+  → data/manual/worklist-<batch>.json
+        ↓  Claude 에게 전달 (docs/HANDOFF.md 5장 지시문 사용)
+     fill 채워서 반환
+        ↓  data/manual/filled-<batch>.json 으로 저장
+npm run merge -- <batch>          # 검증 후 병합
+npm run build                     # CSV·인덱스 재생성
+```
+
+| 옵션 | 용도 |
+|---|---|
+| `--size 40` | 배치 크기 (기본 25) |
+| `--zone 을지로` | 구역 한정 |
+| `--badge DINNER` | 회식장소만 |
+| `--stale` | 재검토 기한 지난 건만 |
+| `--dry` (merge) | 병합 없이 검증만 |
+
+### 병합 안전장치
+
+출처 없는 값은 추측이므로 병합하지 않는다. 아래에 걸리면 **해당 업소만** 거부하고 나머지는 정상 병합한다.
+
+- 값을 채웠는데 `sources` 가 비었거나 URL 형식이 아님
+- `confidence` 가 `HIGH`/`MEDIUM`/`LOW` 가 아님
+- enum 밖의 값(`"가능"`), 숫자 자리에 문자열(`"16명"`)
+- 병합 결과가 스키마 검증 실패 → 이 경우 **아무것도 저장하지 않음**
+- `manual_meta.human_verified: true` 인 필드는 자동 배치가 덮어쓰지 않음
+
+### 출처 추적
+
+채워진 값은 `manual_meta` 에 출처·시점·신뢰도가 함께 기록된다.
+
+```json
+"manual_meta": {
+  "filled_at": "2026-08-26", "filled_by": "claude", "batch_id": "2026-08-26-01",
+  "confidence": "MEDIUM",
+  "sources": [{ "url": "...", "title": "가게 인스타그램", "as_of": "2026-07" }],
+  "fields_filled": ["facility.tabling", "vibe.tags"],
+  "field_sources": { "menus[].price": "..." },
+  "human_verified": false,
+  "next_review": "2026-11-26"
+}
+```
+
+재수집 주기는 가격·웨이팅·콜키지금액 등 잘 바뀌는 값 **3개월**, 룸·예약·분위기 **6개월**.
+기한이 지나면 `--stale` 배치에 자동으로 잡힌다.
+
+상세 규칙은 `docs/MANUAL_COLLECTION.md`, 다른 Claude 세션 인수인계는 `docs/HANDOFF.md`.
 
 ---
 
